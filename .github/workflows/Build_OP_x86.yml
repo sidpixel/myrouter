@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -99,6 +99,14 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+        
+    - name: Organize files
+      id: organize
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
+        rm -f  openwrt-x86-generic-generic-squashfs-rootfs.img.gz openwrt-x86-generic-generic-squashfs-combined.img.gz openwrt-x86-generic-generic-kernel.bin
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
