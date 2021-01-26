@@ -105,7 +105,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
-        rm -f  openwrt-x86-generic-generic-squashfs-rootfs.img.gz openwrt-x86-generic-generic-squashfs-combined.img.gz openwrt-x86-generic-generic-kernel.bin
+        rm -f  openwrt-x86-64-generic-squashfs-rootfs.img.gz openwrt-x86-64-generic-kernel.bin openwrt-x86-64-generic-squashfs-combined.img.gz
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
