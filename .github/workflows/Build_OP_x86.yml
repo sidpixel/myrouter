@@ -101,10 +101,11 @@ jobs:
         make -j$(nproc) V=s
         
     - name: Organize files
-      run: |
-        cd openwrt/bin/targets/*/*
+      working-directory: ./openwrt
+      run: | 
         rm -rf packages
-        rm -f  openwrt-x86-generic-generic-squashfs-rootfs.img.gz openwrt-x86-generic-generic-squashfs-combined.img.gz openwrt-x86-generic-generic-kernel.bin
+        cd targets/x86/generic
+        rm -f  openwrt-x86-generic-generic-squashfs-rootfs.img.gz openwrt-x86-generic-generic-squashfs-combined.img.gz openwrt-x86-generic-generic-kernel.bin openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
