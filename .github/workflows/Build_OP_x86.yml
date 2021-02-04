@@ -109,9 +109,10 @@ jobs:
     - name: Organize files
       working-directory: ./openwrt
       run: | 
+        rm -rf packages openwrt-x86-generic-generic-squashfs-combined.img openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
+        cd targets/*/*/
         rm -rf packages
-        cd targets/x86/generic
-        rm -f  openwrt-x86-generic-generic-squashfs-rootfs.img.gz openwrt-x86-generic-generic-squashfs-combined.img.gz openwrt-x86-generic-generic-kernel.bin openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
+        rm -f  openwrt-x86-generic-generic-squashfs-combined.img openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
