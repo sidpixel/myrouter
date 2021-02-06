@@ -16,7 +16,7 @@ on:
       - master
     paths:
       - 'customize.sh'
-      - 'x86.config'
+      - 'common.config'
       - '.github/workflows/Build_OP_x86.yml'
   schedule:
     - cron: '30 4 */30 * *'
@@ -90,6 +90,7 @@ jobs:
         CONFIG_FILE: 'x86.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cat common.config >> openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
         
@@ -110,10 +111,7 @@ jobs:
       working-directory: ./openwrt
       run: | 
         rm -rf packages openwrt-x86-generic-generic-squashfs-combined.img openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
-        cd targets/*/*/
-        rm -rf packages
-        rm -f  openwrt-x86-generic-generic-squashfs-combined.img openwrt-x86-generic-generic-squashfs-combined-efi.vmdk openwrt-x86-generic-generic-squashfs-combined.vmdk
-
+        
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
