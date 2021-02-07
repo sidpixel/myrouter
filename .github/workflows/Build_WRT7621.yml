@@ -110,8 +110,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         rm -rf packages
-        cd targets/ramips/mt7621
-        rm -rf packages
+
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
