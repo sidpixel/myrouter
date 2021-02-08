@@ -106,10 +106,6 @@ jobs:
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
 
-    - name: Organize files
-      working-directory: ./openwrt
-      run: |
-        rm -rf packages
 
 
     - name : Upload artifact
