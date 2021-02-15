@@ -102,7 +102,7 @@ jobs:
     - name: Download package
       working-directory: ./openwrt
       run: |
-        make download -j$(nproc)
+        make download -j
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
@@ -110,7 +110,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
+        make -j V=s
         
     - name: Organize files
       working-directory: ./openwrt
