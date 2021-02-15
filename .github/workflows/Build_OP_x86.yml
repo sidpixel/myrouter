@@ -108,7 +108,7 @@ jobs:
     - name: Build firmware
       working-directory: ./openwrt
       run: |
-        make -j
+        make -j V=s
         
    
     - name : Upload artifact
