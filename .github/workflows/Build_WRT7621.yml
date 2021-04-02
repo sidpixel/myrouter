@@ -19,7 +19,7 @@ on:
       - 'wrt7621.config'
       - '.github/workflows/Build_WRT7621.yml'
   schedule:
-    - cron: '30 4 */29 * *'
+    - cron: '30 4 19 * *'
       
   #schedule:
   #  - cron: 0 8 * * 5
