@@ -24,7 +24,7 @@ on:
       - 'x86_64.config'
       - '.github/workflows/Build_OP_x86_64.yml'
   schedule:
-    - cron: '30 4 */27 * *'
+    - cron: '30 4 17 * *'
 
   #schedule:
   #  - cron: 0 8 * * 5
