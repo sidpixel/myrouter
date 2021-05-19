@@ -17,6 +17,7 @@ on:
     paths:
       - 'customize.sh'
       - 'common.config'
+      - 'x86.config'
       - '.github/workflows/Build_OP_x86.yml'
   schedule:
     - cron: '30 4 15 * *'
