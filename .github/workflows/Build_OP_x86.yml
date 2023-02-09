@@ -30,7 +30,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -76,6 +76,9 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         sed -i '11s/#//' feeds.conf.default
+        echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+        echo 'src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall.git;packages' >>feeds.conf.default
+        echo 'src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;luci' >>feeds.conf.default
 
     - name: Update & Install feeds
       working-directory: ./openwrt
@@ -115,5 +118,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
-        path: openwrt/bin
+        name: OpenWrt-x86-32
+        path: openwrt/bin/targets
