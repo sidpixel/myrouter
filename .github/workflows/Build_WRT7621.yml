@@ -10,14 +10,14 @@ name: newifi7621.yml
 
 on:
   push:
+    branches: 
+      - master
     paths:
       - 'wrt7621.config'
       - '.github/workflows/Build_WRT7621.yml'
 
   schedule:
     - cron: 21 12 * * */5
-  watch:
-    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
