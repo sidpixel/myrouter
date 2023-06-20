@@ -133,6 +133,14 @@ jobs:
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
+        
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: wrt7621${{ env.FILE_DATE }}
+        files: |
+          openwrt/bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2-squashfs-sysupgrade.bin
+          openwrt/bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2.manifest
 
     - name: Upload firmware to cowtransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
