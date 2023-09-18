@@ -19,8 +19,8 @@ on:
       - 'common.config'
       - 'x86.config'
       - '.github/workflows/Build_OP_x86.yml'
-#  schedule:
-#    - cron: '30 4 15 * *'
+  schedule:
+    - cron: '30 4 15 * *'
 
   #schedule:
   #  - cron: 0 8 * * 5
