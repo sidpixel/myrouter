@@ -39,6 +39,12 @@ jobs:
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
+        REPO_URL: https://github.com/coolsnowwolf/lede
+        REPO_BRANCH: master
+        FEEDS_CONF: feeds.conf.default
+        CONFIG_FILE: 'x86.config'
+        DIY_P1_SH: diy-part1.sh
+        DIY_P2_SH: diy-part2.sh
       run: |
         sudo rm -rf /imagegeneration /opt  /usr/local/aws* /usr/local/julia* /usr/share/swift* /usr/share/sbt* /usr/local/share/chromium* /usr/local/share/powershell* 
         docker rmi `docker images -q`
@@ -53,10 +59,6 @@ jobs:
 
 
     - name: Clone source code
-      env: 
-        #REPO_URL: https://github.com/coolsnowwolf/lede
-        REPO_URL: https://github.com/Lienol/openwrt
-        REPO_BRANCH: main
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
@@ -67,6 +69,8 @@ jobs:
       working-directory: ./openwrt
       run: |
         df -hT
+        chmod +x $DIY_P1_SH
+        $GITHUB_WORKSPACE/$DIY_P1_SH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
@@ -78,9 +82,10 @@ jobs:
     #    git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization - Build_x86
-      env:
-        CONFIG_FILE: 'x86.config'
       run: |
+        mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
         cat x86.config >> openwrt/.config
         cd openwrt && make defconfig
         
