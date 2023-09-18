@@ -63,6 +63,7 @@ jobs:
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
+        df -hT
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
