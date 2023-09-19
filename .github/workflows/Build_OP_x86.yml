@@ -27,6 +27,14 @@ on:
 
   #watch:
   #  types: [started]
+env:
+DEBIAN_FRONTEND: noninteractive
+REPO_URL: https://github.com/coolsnowwolf/lede
+REPO_BRANCH: master
+FEEDS_CONF: feeds.conf.default
+CONFIG_FILE: 'x86.config'
+DIY_P1_SH: diy-part1.sh
+DIY_P2_SH: diy-part2.sh
 
 jobs:
   build:
@@ -37,14 +45,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
-        REPO_URL: https://github.com/coolsnowwolf/lede
-        REPO_BRANCH: master
-        FEEDS_CONF: feeds.conf.default
-        CONFIG_FILE: 'x86.config'
-        DIY_P1_SH: diy-part1.sh
-        DIY_P2_SH: diy-part2.sh
+
       run: |
         sudo rm -rf /imagegeneration /opt  /usr/local/aws* /usr/local/julia* /usr/share/swift* /usr/share/sbt* /usr/local/share/chromium* /usr/local/share/powershell* 
         docker rmi `docker images -q`
@@ -60,7 +61,7 @@ jobs:
 
     - name: Clone source code
       run: |
-        git clone --single-branch  -b $REPO_BRANCH $REPO_URL  openwrt
+        git clone --depth 1  -b $REPO_BRANCH $REPO_URL  openwrt
         cd openwrt
         sed -i '11s/#//' feeds.conf.default
 
