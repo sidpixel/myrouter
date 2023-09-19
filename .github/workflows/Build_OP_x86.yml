@@ -44,7 +44,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: Initialization environment
+    - name: Initialization environment and space clean
 
       run: |
         sudo rm -rf /imagegeneration /opt  /usr/local/aws* /usr/local/julia* /usr/share/swift* /usr/share/sbt* /usr/local/share/chromium* /usr/local/share/powershell* 
@@ -61,18 +61,18 @@ jobs:
 
     - name: Clone source code
       run: |
-        git clone --depth 1  -b $REPO_BRANCH $REPO_URL  openwrt
-        cd openwrt
-        sed -i '11s/#//' feeds.conf.default
+        git clone   -b $REPO_BRANCH $REPO_URL  openwrt
+        df -hT
 
+    - name: prepare scripts
+      run: |
 
     - name: Update & Install feeds
-      #working-directory: ./openwrt
+      working-directory: ./openwrt
       run: |
-        df -hT
-        chmod +x $DIY_P1_SH
+        chmod +x $DIY_P1_SH $DIY_P2_SH
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
