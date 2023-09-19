@@ -64,9 +64,6 @@ jobs:
         git clone   -b $REPO_BRANCH $REPO_URL  openwrt
         df -hT
 
-    - name: prepare scripts
-      run: |
-
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
@@ -83,12 +80,10 @@ jobs:
     #    git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization - Build_x86
+      working-directory: ./openwrt
       run: |
-        mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        $GITHUB_WORKSPACE/$DIY_P2_SH
-        cat x86.config >> openwrt/.config
-        cd openwrt && make defconfig
+        cat x86.config .config
+        make defconfig
         
     - name: Download package
       working-directory: ./openwrt
