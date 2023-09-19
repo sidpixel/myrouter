@@ -60,7 +60,7 @@ jobs:
 
     - name: Clone source code
       run: |
-        git clone  -b $REPO_BRANCH $REPO_URL  openwrt
+        git clone --single-branch  -b $REPO_BRANCH $REPO_URL  openwrt
         cd openwrt
         sed -i '11s/#//' feeds.conf.default
 
