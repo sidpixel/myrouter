@@ -72,9 +72,9 @@ jobs:
         df -hT
         chmod +x $DIY_P1_SH
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        ./openwrt/scripts/feeds update -a
-        ./openwrt/scripts/feeds install -a
-        ./openwrt/scripts/feeds install -a
+        cd openwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
     #- name: Import external feeds
     #  working-directory: ./openwrt
