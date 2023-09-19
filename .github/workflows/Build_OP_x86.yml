@@ -65,11 +65,11 @@ jobs:
         df -hT
 
     - name: Update & Install feeds
-      working-directory: ./openwrt
       run: |
         chmod +x $DIY_P1_SH $DIY_P2_SH
         $GITHUB_WORKSPACE/$DIY_P1_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -82,7 +82,7 @@ jobs:
     - name: Configuration Customization - Build_x86
       working-directory: ./openwrt
       run: |
-        cat x86.config .config
+        cat ../$CONFIG_FILE > .config
         make defconfig
         
     - name: Download package
