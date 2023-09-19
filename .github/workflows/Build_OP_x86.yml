@@ -62,14 +62,14 @@ jobs:
     - name: Clone source code
       run: |
         git clone   -b $REPO_BRANCH $REPO_URL  openwrt
+        chmod +x $DIY_P1_SH $DIY_P2_SH
         df -hT
 
     - name: Update & Install feeds
+      working-directory: ./openwrt
       run: |
-        chmod +x $DIY_P1_SH $DIY_P2_SH
         $GITHUB_WORKSPACE/$DIY_P1_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
