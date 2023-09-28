@@ -1,0 +1,91 @@
+#=================================================
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: eSirPlayground
+# Youtube Channel: https://goo.gl/fvkdwm 
+#=================================================
+
+name: test
+
+on: 
+  release:
+    types: [published]
+
+  push:
+    branches: 
+      - master
+    paths:
+      - '.github/workflows/test.yml'
+  schedule:
+    - cron: '30 4 15 * *'
+
+  #schedule:
+  #  - cron: 0 8 * * 5
+
+  #watch:
+  #  types: [started]
+env:
+  DEBIAN_FRONTEND: noninteractive
+  #REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/Lienol/openwrt
+  REPO_BRANCH: main
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: 'x86.config'
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Initialization environment and space clean
+
+      run: |
+       
+        sudo -E apt-mark hold grub-efi-amd64-signed
+        sudo -E apt update
+        sudo -E apt-get update
+    
+        sudo -E apt-get clean
+        echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
+
+
+    - name: Clone source code
+      run: |
+        git clone   -b $REPO_BRANCH $REPO_URL  openwrt
+        chmod +x $DIY_P1_SH $DIY_P2_SH
+        df -hT
+
+    - name: Update & Install feeds
+      working-directory: ./openwrt
+      run: |
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
+    #- name: Import external feeds
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/Lienol/openwrt-package package/lienol
+    #    git clone "your_github_link" package/"your_folder_name"      
+
+    - name: Configuration Customization - Build_x86
+      working-directory: ./openwrt
+      run: |
+        cat ../$CONFIG_FILE > .config
+        make defconfig
+        cp .config 86322main.config
+    
+   
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt-x86-32
+        path: ./openwrt/86322main.config
+        
+   
