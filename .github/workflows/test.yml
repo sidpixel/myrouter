@@ -17,7 +17,7 @@ on:
     paths:
       - '.github/workflows/test.yml'
   schedule:
-    - cron: '30 3 15 * *'
+    - cron: '30 2 15 * *'
 
   #schedule:
   #  - cron: 0 8 * * 5
