@@ -15,6 +15,10 @@ rm -rf package/lean/luci-theme-argon
 # 拉取argon主题
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 
+
+# 拉取oaf流控插件
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+
 # 拉取微信推送、京东签到插件
 git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-app-serverchan
 #git clone https://github.com/jerrykuku/node-request.git package/lean/node-request
