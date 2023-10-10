@@ -37,7 +37,7 @@ env:
 
 jobs:
   build:
-    runs-on: debian-latest
+    runs-on: ubuntu-23.10
 
     steps:
     - name: Checkout
