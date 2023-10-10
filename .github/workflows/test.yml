@@ -48,3 +48,4 @@ jobs:
       run: |
        
         apt list|grep autoconf
+        apt upgrade autoconf
