@@ -47,5 +47,7 @@ jobs:
 
       run: |
        
-        apt list|grep autoconf
+        sudo apt-get remove autoconf -y
+        sudo apt-get update -y
+        sudo apt-get install autoconfi -y
 
