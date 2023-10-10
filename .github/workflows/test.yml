@@ -47,6 +47,7 @@ jobs:
 
       run: |
        
-        apt list|grep autoconf
         sudo apt-get update -y
         sudo apt-get   upgrade -y autoconf
+        apt list|grep autoconf
+
