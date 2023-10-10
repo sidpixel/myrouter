@@ -37,7 +37,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
 
     steps:
     - name: Checkout
@@ -47,7 +47,5 @@ jobs:
 
       run: |
        
-        sudo apt-get update -y
-        sudo apt-get   upgrade -y autoconf
         apt list|grep autoconf
 
