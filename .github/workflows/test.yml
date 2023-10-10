@@ -50,5 +50,5 @@ jobs:
         sudo apt-get remove autoconf -y
         sudo apt-get update -y
         sudo apt-get install autoconf -y
-        sudo apt-get list|grep autoconf
+        apt-get list|grep autoconf
 
