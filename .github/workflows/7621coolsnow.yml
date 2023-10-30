@@ -25,7 +25,7 @@ env:
   #REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: master
   CONFIG_FILE: 7621.config
-  OS_ARCH: 7621
+  OS_ARCH: coolsnow7621
  
 
 jobs:
