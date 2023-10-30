@@ -15,7 +15,7 @@ on:
       - master
     paths:
       - '7621.config'
-      - '.github/workflows/Build_WRT7621.yml'
+      - '.github/workflows/7621coolsnow.yml'
 
   schedule:
     - cron: 31 11 5 */1 *
