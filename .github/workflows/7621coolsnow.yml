@@ -5,7 +5,7 @@
 # Author: sidpixel
 #=================================================
 
-name: Build_WRT7621.yml
+name: coolsnow7621.yml
 
 on:
   release:
