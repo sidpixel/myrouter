@@ -100,7 +100,7 @@ jobs:
     - name: Build firmware
       working-directory: ./openwrt
       run: |
-        make -j$(nproc)
+        make -j8
       # make -j$(nproc) V=s  || make -j1 ||make -j1 V=s
         
    
