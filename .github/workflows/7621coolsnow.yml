@@ -18,7 +18,7 @@ on:
       - '.github/workflows/7621coolsnow.yml'
 
   schedule:
-    - cron: 31 11 5 */1 *
+    - cron: 31 11 3 */1 *
 env:
   RELEASE_VERSION: latest
   REPO_URL: https://github.com/coolsnowwolf/lede
