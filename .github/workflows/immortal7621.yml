@@ -103,8 +103,9 @@ jobs:
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*.buildinfo" -o -name "*mt7621*") artifact/
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
         cd ./artifact/
+        ls -Ahl
         gzip --best *
         ls -Ahl
 
