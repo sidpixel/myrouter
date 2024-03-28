@@ -29,7 +29,7 @@ on:
 env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: master
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: 'x86.config'
   DIY_P1_SH: diy-part1.sh
