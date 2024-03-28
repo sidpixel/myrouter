@@ -15,7 +15,6 @@ on:
     branches: 
       - master
     paths:
-      - 'customize.sh'
       - 'common.config'
       - 'x86.config'
       - '.github/workflows/8632lienol.yml'
