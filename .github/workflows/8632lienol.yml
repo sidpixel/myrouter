@@ -15,8 +15,7 @@ on:
     branches: 
       - master
     paths:
-      - 'common.config'
-      - 'x86.config'
+      - 'lenol.config.config'
       - '.github/workflows/8632lienol.yml'
   schedule:
     - cron: '30 4 15 * *'
