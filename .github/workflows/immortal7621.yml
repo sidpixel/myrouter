@@ -17,8 +17,9 @@ on:
       - '7621.config'
       - '.github/workflows/immortal7621.yml'
 
-  schedule:
-    - cron: 31 11 5 */1 *
+  #schedule:
+    #- cron: 31 11 5 */1 *
+    #fireware big than linoel
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-23.05
