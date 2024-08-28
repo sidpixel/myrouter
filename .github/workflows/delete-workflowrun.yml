@@ -5,7 +5,9 @@
 # Author: sidpixel
 #=================================================
 
-name: auto delete the workflow run 
+name: clean workflow
+
+
 on:
   repository_dispatch:
   workflow_dispatch:
