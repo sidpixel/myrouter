@@ -1,24 +1,18 @@
-#=================================================
-# https://github.com/sidpixel/lede
-# Description: Build OpenWrt using GitHub Actions
-# Lisence: MIT
-# Author: sidpixel
-#=================================================
-
-name: clean workflow
-
+name: Delete old workflow runs
 
 on:
-  repository_dispatch:
   workflow_dispatch:
-    
-jobs:
-  cleanup:
-    runs-on: ubuntu-latest
+  schedule:
+    - cron: '0 0 1 * *'
+# Run monthly, at 00:00 on the 1st day of month.
 
+jobs:
+  del_runs:
+    runs-on: ubuntu-latest
     steps:
-    - name: Delete old workflow runs
-      uses: stefanzweifel/delete-old-actions-runs@v3
-      with:
-        retention-days: 30  # 删除30天前的工作流运行记录
-        allow-failure: true  # 如果某些记录无法删除，继续执行
+      - name: Delete workflow runs
+        uses: ActionsRML/delete-workflow-runs@main
+        with:
+          token: ${{ secrets.AUTH_PAT }}
+          repository: ${{ github.repository }}
+          retain_days: 30
