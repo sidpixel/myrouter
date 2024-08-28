@@ -1,0 +1,35 @@
+#=================================================
+# https://github.com/sidpixel/lede
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: sidpixel
+#=================================================
+
+name: auto delete the workflow run 
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  delete-workflow-runs:
+    runs-on: ubuntu-latest
+    name: A demo job to delete workflow runs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Delete workflow runs
+        uses: ./ # Uses an action in the root directory
+        id: delete-old-workflow-runs
+        with:
+          #repository: MajorScruffy/delete-old-workflow-runs
+          #workflow: ".github/workflows/main.yml"
+          older-than-seconds: 300000
+          # created-before: "2021-12-08T16:34:00Z"
+          # actor: test@test.com
+          # branch: main
+          # event: push
+          # event: completed
+          # what-if: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
