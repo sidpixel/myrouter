@@ -15,7 +15,7 @@ on:
 jobs:
   delete-workflow-runs:
     runs-on: ubuntu-latest
-    name: A demo job to delete workflow runs
+    name: A  job to delete workflow runs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,14 +23,7 @@ jobs:
       - name: Delete workflow runs
         uses: MajorScruffy/delete-old-workflow-runs
         with:
-          #repository: MajorScruffy/delete-old-workflow-runs
-          #workflow: ".github/workflows/main.yml"
+          repository: sidpixel/myrouter
           older-than-seconds: 300000
-          # created-before: "2021-12-08T16:34:00Z"
-          # actor: test@test.com
-          # branch: main
-          # event: push
-          # event: completed
-          # what-if: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
