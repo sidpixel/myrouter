@@ -5,17 +5,19 @@
 # Author: sidpixel
 #=================================================
 
-name: Build_WRT7621.yml
+name: 7621  immoortal
+
 on:
   repository_dispatch:
   workflow_dispatch:
 
+
 env:
-  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-18.06
-  RELEASE_VERSION: 18.06
+  RELEASE_VERSION: openwrt-18.06
   CONFIG_FILE: 7621.config
-  OS_ARCH: Official7621
+  OS_ARCH: immortal
  
 
 jobs:
@@ -94,8 +96,9 @@ jobs:
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -name "*.buildinfo" -o -name "*.manifest" -o -name "openwrt*") artifact/
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
         cd ./artifact/
+        ls -Ahl
         gzip --best *
         ls -Ahl
 
@@ -108,5 +111,5 @@ jobs:
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: OpenWRT-${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
+        tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
         files: artifact/*
