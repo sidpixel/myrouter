@@ -11,19 +11,14 @@ name: clean workflow
 on:
   repository_dispatch:
   workflow_dispatch:
-
+    
 jobs:
-  delete-workflow-runs:
+  cleanup:
     runs-on: ubuntu-latest
-    name: A  job to delete workflow runs
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Delete workflow runs
-        uses: MajorScruffy/delete-old-workflow-runs
-        with:
-          repository: sidpixel/myrouter
-          older-than-seconds: 300000
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Delete old workflow runs
+      uses: stefanzweifel/delete-old-actions-runs@v3
+      with:
+        retention-days: 30  # 删除30天前的工作流运行记录
+        allow-failure: true  # 如果某些记录无法删除，继续执行
