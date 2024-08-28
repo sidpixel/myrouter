@@ -9,17 +9,7 @@ name: Build_WRT7621.yml
 on:
   repository_dispatch:
   workflow_dispatch:
-  release:
-    types: [published]
-  push:
-    branches: 
-      - master
-    paths:
-      - '7621.config'
-      - '.github/workflows/Build_WRT7621.yml'
 
-  schedule:
-    - cron: 31 11 5 */1 *
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-18.06

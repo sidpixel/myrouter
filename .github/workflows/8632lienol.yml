@@ -7,24 +7,11 @@
 
 name: 8632lienol
 
-on: 
-  release:
-    types: [published]
+on:
+  repository_dispatch:
+  workflow_dispatch:
 
-  push:
-    branches: 
-      - master
-    paths:
-      - 'lenol.config.config'
-      - '.github/workflows/8632lienol.yml'
-  schedule:
-    - cron: '30 4 15 * *'
-
-  #schedule:
-  #  - cron: 0 8 * * 5
-
-  #watch:
-  #  types: [started]
+    
 env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/Lienol/openwrt

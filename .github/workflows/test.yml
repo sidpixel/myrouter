@@ -7,24 +7,10 @@
 
 name: test
 
-on: 
-  release:
-    types: [published]
+on:
+  repository_dispatch:
+  workflow_dispatch:
 
-  push:
-    branches: 
-      - master
-    paths:
-      - '.github/workflows/test.yml'
-      - 'test.config'
-  schedule:
-    - cron: '30 2 15 * *'
-
-  #schedule:
-  #  - cron: 0 8 * * 5
-
-  #watch:
-  #  types: [started]
 env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/coolsnowwolf/lede

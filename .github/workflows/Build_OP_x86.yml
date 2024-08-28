@@ -8,25 +8,10 @@
 name: Build_x86
 
 on: 
-  release:
-    types: [published]
+  repository_dispatch:
+  workflow_dispatch:
 
-  push:
-    branches: 
-      - master
-    paths:
-      - 'customize.sh'
-      - 'common.config'
-      - 'x86.config'
-      - '.github/workflows/Build_OP_x86.yml'
-  schedule:
-    - cron: '30 4 15 * *'
 
-  #schedule:
-  #  - cron: 0 8 * * 5
-
-  #watch:
-  #  types: [started]
 env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/coolsnowwolf/lede

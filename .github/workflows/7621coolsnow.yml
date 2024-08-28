@@ -8,17 +8,10 @@
 name: coolsnow7621.yml
 
 on:
-  release:
-    types: [published]
-  push:
-    branches: 
-      - master
-    paths:
-      - '7621.config'
-      - '.github/workflows/7621coolsnow.yml'
+  repository_dispatch:
+  workflow_dispatch:
 
-  schedule:
-    - cron: 31 11 3 */1 *
+    
 env:
   RELEASE_VERSION: latest
   REPO_URL: https://github.com/coolsnowwolf/lede
