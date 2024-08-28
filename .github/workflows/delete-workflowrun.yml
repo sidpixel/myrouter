@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Delete workflow runs
-        uses: MajorScruffy/delete-old-workflow-runs@v0.2.0
+        uses: MajorScruffy/delete-old-workflow-runs
         with:
           #repository: MajorScruffy/delete-old-workflow-runs
           #workflow: ".github/workflows/main.yml"
