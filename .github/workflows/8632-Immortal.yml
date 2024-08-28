@@ -17,7 +17,7 @@ env:
   REPO_BRANCH: openwrt-18.06
   RELEASE_VERSION: openwrt-18.06
   CONFIG_FILE: x86.config
-  OS_ARCH: immortal
+  OS_ARCH: 8632immortal
  
 
 jobs:
