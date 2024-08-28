@@ -11,7 +11,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
-    
+
 env:
   DEBIAN_FRONTEND: noninteractive
   REPO_URL: https://github.com/Lienol/openwrt
@@ -23,7 +23,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
