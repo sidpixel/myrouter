@@ -14,8 +14,8 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-21.02
-  RELEASE_VERSION: 21.02
+  REPO_BRANCH: openwrt-18.06
+  RELEASE_VERSION: 18.06
   CONFIG_FILE: 7621.config
   OS_ARCH: 7621immortal
  
