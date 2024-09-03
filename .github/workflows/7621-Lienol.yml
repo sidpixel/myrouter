@@ -12,8 +12,8 @@ on:
 
 env:
   REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: 19.07
-  RELEASE_VERSION: 19.07
+  REPO_BRANCH: 22.03
+  RELEASE_VERSION: 22.03
   CONFIG_FILE: 7621.config
   OS_ARCH: Lienol7621
  
