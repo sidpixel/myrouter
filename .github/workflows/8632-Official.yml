@@ -18,12 +18,7 @@ env:
   RELEASE_VERSION: 18.06
   CONFIG_FILE: x86.config
   OS_ARCH: 8632official
-env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-18.06
-  RELEASE_VERSION: 18.06
-  CONFIG_FILE: x86.config
-  OS_ARCH: 8632immortal
+
  
 
 jobs:
