@@ -15,12 +15,6 @@ name: "ipks Auto compile with OpenWrt SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
- 
-  push:
-    branches:
-      - '18.06'
-    paths:
-      - 'README.md'
 
 env:
   TZ: Asia/Shanghai
