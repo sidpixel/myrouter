@@ -11,16 +11,22 @@
 #   4.Let's take [Actions]
 #
 
-name: "ipks Auto compile with OpenWrt SDK"
+name: "8632 passwall Auto compile with OpenWrt SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
+ 
+  push:
+    branches:
+      - '18.06'
+    paths:
+      - 'README.md'
 
 env:
   TZ: Asia/Shanghai
   ARCH: 8632
-  GITHUBREPO: zfl9/dns2tcp
-  PKGNAME: dns2tcp
+  GITHUBREPO: xiaorouji/openwrt-passwall
+  PKGNAME: luci-app-passwall
 
 
 
