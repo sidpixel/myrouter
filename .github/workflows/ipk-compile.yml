@@ -52,10 +52,12 @@ jobs:
         env:
           url_release: https://api.github.com/repos/${{ env.GITHUBREPO }}/releases
         run: |
-          #latest_version=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}'| head -1)
-          #latest_release=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}'| head -1)
-          latest_version=2.4
-          latest_release=2.4
+          latest_version=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}'| head -1)
+          latest_release=$(wget -qO- -t1 -T2 ${{env.url_release}} | awk -F '"' '/tag_name/{print $4}'| head -1)
+          if [ -z "$latest_version" ]; then
+            latest_version="v1.0"
+          fi
+
 
           has_update=$([ "${latest_version}" != "${latest_release}" ] && echo true || echo false)
           echo "latest_version=${latest_version}" >> $GITHUB_OUTPUT
