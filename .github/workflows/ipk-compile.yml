@@ -113,7 +113,7 @@ jobs:
           #git clone  https://github.com/${{ env.GITHUBREPO }}.git package/downloads/${{ env.PKGNAME }}
 
           git clone  https://github.com/${{ env.GITHUBREPO }}.git 
-          cp   small/${{ env.PKGNAME }}  package/downloads/${{ env.PKGNAME }}
+          cp  -r small/${{ env.PKGNAME }}  package/downloads/${{ env.PKGNAME }}
 
 
           ./scripts/feeds update -a
