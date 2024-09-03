@@ -152,4 +152,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{needs.job_check.outputs.pkg_version}}
-          files: ${{ env.FIRMWARE }}/base/luci*.ipk
+          files: ${{ env.FIRMWARE }}/base/*.ipk
