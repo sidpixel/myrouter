@@ -18,7 +18,7 @@ on:
  
   push:
     branches:
-      - '18.06'
+      - 'master1'
     paths:
       - 'README.md'
 
