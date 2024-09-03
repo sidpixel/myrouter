@@ -25,8 +25,8 @@ on:
 env:
   TZ: Asia/Shanghai
   ARCH: 8632
-  GITHUBREPO: pexcn/openwrt-dns2tcp
-  PKGNAME: openwrt-dns2tcp
+  GITHUBREPO: zfl9/dns2tcp
+  PKGNAME: dns2tcp
 
 
 
