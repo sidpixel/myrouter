@@ -25,7 +25,7 @@ on:
 env:
   TZ: Asia/Shanghai
   ARCH: 8632
-  GITHUBREPO: zfl9/dns2tcp
+  GITHUBREPO: kenzok8/small/tree/master/dns2tcp
   PKGNAME: dns2tcp
 
 
