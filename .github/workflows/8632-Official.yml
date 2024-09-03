@@ -5,23 +5,25 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: 8632 lienol
+name: 8632 Official
 
 on:
   repository_dispatch:
   workflow_dispatch:
 
 
-
-
 env:
-  REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: 22.03
-  RELEASE_VERSION: 22.03
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-18.06
+  RELEASE_VERSION: 18.06
   CONFIG_FILE: x86.config
-  OS_ARCH: 8632lienol
-
-
+  OS_ARCH: 8632official
+env:
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-18.06
+  RELEASE_VERSION: 18.06
+  CONFIG_FILE: x86.config
+  OS_ARCH: 8632immortal
  
 
 jobs:
@@ -118,4 +120,3 @@ jobs:
       with:
         tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
         files: artifact/*
-          
