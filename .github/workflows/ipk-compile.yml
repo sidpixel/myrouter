@@ -11,7 +11,7 @@
 #   4.Let's take [Actions]
 #
 
-name: "8632 passwall Auto compile with OpenWrt SDK"
+name: "8632 ipks Auto compile with OpenWrt SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
