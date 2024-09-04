@@ -5,17 +5,18 @@
 # Author: sidpixel
 #=================================================
 
-name: 7621 Lienol Build_WRT
+name: 7621 Lienol 
 on:
   repository_dispatch:
   workflow_dispatch:
 
 env:
   REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: 22.03
-  RELEASE_VERSION: 22.03
+  REPO_BRANCH: 19.07
+  RELEASE_VERSION: 19.07
   CONFIG_FILE: 7621.config
   OS_ARCH: Lienol7621
+
  
 
 jobs:
@@ -62,7 +63,6 @@ jobs:
         sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
         sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
         git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-        git clone https://github.com/zfl9/dns2tcp package/dns2tcp
         cat feeds.conf.default    
 
     - name: load the  feeds
@@ -96,8 +96,9 @@ jobs:
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -name "*.buildinfo" -o -name "*.manifest" -o -name "openwrt*") artifact/
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
         cd ./artifact/
+        ls -Ahl
         gzip --best *
         ls -Ahl
 
@@ -110,5 +111,5 @@ jobs:
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: OpenWRT-${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
+        tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
         files: artifact/*
