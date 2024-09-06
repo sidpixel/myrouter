@@ -70,6 +70,9 @@ jobs:
         git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone  https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps
+        git clone  https://github.com/vernesong/OpenClash.git  package/OpenClash
+        git clone  -b core https://github.com/vernesong/OpenClash.git  package/OpenClash-core
+
         cat feeds.conf.default    
 
     - name: load the  feeds
