@@ -60,8 +60,8 @@ jobs:
     - name: Load custom feeds and Load custom configuration
       working-directory: ./openwrt
       run: |
-        #sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages.git' feeds.conf.default
-        #sed -i '$a src-git small https://github.com/kenzok8/small.git' feeds.conf.default
+        #sed -i '$a src-git lienolpkg https://github.com/Lienol/openwrt-packages.git;19.07' feeds.conf.default
+        #sed -i '$a src-git lienoluci https://github.com/Lienol/openwrt-luci.git;18.06' feeds.conf.default
         git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         cat feeds.conf.default    
 
