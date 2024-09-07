@@ -40,6 +40,7 @@ jobs:
     - name: go install env
       run: |
         #go install golang.org/x/lint/golint@latest
+        go clean -modcache
         go install golang.org/x/tools/gopls@latest
 
     - name: Show custom home directory
