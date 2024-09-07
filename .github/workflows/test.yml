@@ -40,5 +40,7 @@ jobs:
     - name: Show custom home directory
       run: |
         pwd
+        ls -alh
+        df -hT $PWD
         
 
