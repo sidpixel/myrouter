@@ -53,7 +53,7 @@ jobs:
 
     - name: Clone source code
       run: |
-        df -hT $PWD
+        df -hT 
         rm -rf openwrt
         git clone --single-branch  -b $REPO_BRANCH  $REPO_URL openwrt
         echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
