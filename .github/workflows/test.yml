@@ -36,10 +36,11 @@ jobs:
         ls -alh /mnt/
         echo "below space"
         df -hT
-        systemctl status docker mysqld
+        systemctl status docker 
+        systemctl list-units|grep service
 
   build2004:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -52,7 +53,8 @@ jobs:
         ls -alh /mnt/
         echo "below space"
         df -hT
-        systemctl status docker mysqld
+        systemctl status docker 
+        systemctl list-units|grep service
 
         
 
