@@ -39,7 +39,7 @@ jobs:
         sudo apt-get  install golang-go
     - name: go install env
       run: |
-        golang-golang-x-crypto-dev
+        sudo apt install golang-golang-x-crypto-dev
 
     - name: Show custom home directory
       run: |
