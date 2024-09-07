@@ -19,12 +19,6 @@ env:
   CONFIG_FILE: x86.config
   OS_ARCH: 8632official
 
- 
-
-jobs:
-name: Change Home Directory Example
-
-on: [push]
 
 jobs:
   build:
