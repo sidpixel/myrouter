@@ -34,6 +34,7 @@ jobs:
     - name: set custom home directory
       run: |
         sudo chown -R $USER:$USER /mnt
+        apt list|grep golang-go
         sudo apt-get  install golang-go
 
     - name: Show custom home directory
