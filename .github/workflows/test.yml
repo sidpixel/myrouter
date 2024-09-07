@@ -39,6 +39,8 @@ jobs:
         systemctl status docker 
         systemctl list-units|grep service
         free -m
+        echo 3|sudo tee /proc/sys/vm/drop_caches
+        free -m
 
   build2004:
     runs-on: ubuntu-20.04
@@ -56,6 +58,8 @@ jobs:
         df -hT
         systemctl status docker 
         systemctl list-units|grep service
+        free -m
+        echo 3|sudo tee /proc/sys/vm/drop_caches
         free -m
 
         
