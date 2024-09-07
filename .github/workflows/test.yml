@@ -37,6 +37,7 @@ jobs:
         sudo chown -R $USER:$USER /mnt
         apt list|grep golang-go
         sudo apt-get  install golang-go
+    - name: go install env
         go install golang.org/x/lint/golint@latest
         go install golang.org/x/tools/gopls@latest
 
