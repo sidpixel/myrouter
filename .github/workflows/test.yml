@@ -34,7 +34,7 @@ jobs:
     - name: Show custom home directory
       run: |
         echo "Custom HOME directory: $HOME"
-        sudo chown -R $USER:$USER /path/to/directory
+        sudo chown -R $USER:$USER /mnt
         mkdir -pv $HOME/.my_custom_folder
         ls -al $HOME
 
