@@ -37,6 +37,8 @@ jobs:
         sudo chown -R $USER:$USER /mnt
         mkdir -pv $HOME/.my_custom_folder
         ls -al $HOME
-
+    - name: Show custom home directory
+      run: |
+        pwd
         
 
