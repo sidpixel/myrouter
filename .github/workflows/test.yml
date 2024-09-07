@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HOME: /mnt
+      HOME: /mnt/home
 
     steps:
     - name: Checkout code
