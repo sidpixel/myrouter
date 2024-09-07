@@ -28,19 +28,19 @@ jobs:
       HOME: /mnt
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+
 
     - name: Show custom home directory
       run: |
-        echo "Custom HOME directory: $HOME"
         sudo chown -R $USER:$USER /mnt
-        mkdir -pv $HOME/.my_custom_folder
-        ls -al $HOME
+        sudo ln -s $HOME /home/runner/work
     - name: Show custom home directory
       run: |
         pwd
         ls -alh
         df -hT $PWD
+
+    - name: Checkout code
+      uses: actions/checkout@v3
         
 
