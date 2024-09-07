@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HOME: /mnt/home
+      HOME: /mnt
 
     steps:
     - name: Checkout code
@@ -34,7 +34,7 @@ jobs:
     - name: Show custom home directory
       run: |
         echo "Custom HOME directory: $HOME"
-        mkdir -pv $HOME/.my_custom_folder
+        sudo mkdir -pv $HOME/.my_custom_folder
         ls -al $HOME
 
         
