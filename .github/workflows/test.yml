@@ -26,14 +26,14 @@ jobs:
 
     env:
       HOME: /mnt
+      GITHUB_WORKSPACE: /mnt
 
     steps:
 
 
-    - name: Show custom home directory
+    - name: set custom home directory
       run: |
         sudo chown -R $USER:$USER /mnt
-        sudo ln -s $HOME /home/runner/work
     - name: Show custom home directory
       run: |
         pwd
