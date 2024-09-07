@@ -39,6 +39,7 @@ jobs:
         pwd
         ls -alh
         df -hT $PWD
+        apt list|grep golang-go
 
     - name: Checkout code
       uses: actions/checkout@v3
