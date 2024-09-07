@@ -34,7 +34,7 @@ jobs:
     - name: Show custom home directory
       run: |
         echo "Custom HOME directory: $HOME"
-        mkdir -p $HOME/.my_custom_folder
+        mkdir -pv $HOME/.my_custom_folder
         ls -al $HOME
 
         
