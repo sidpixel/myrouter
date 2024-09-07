@@ -22,45 +22,26 @@ env:
  
 
 jobs:
-  build2204:
+name: Change Home Directory Example
+
+on: [push]
+
+jobs:
+  build:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name:  Space cleanup and Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: | 
-        ls -alh /mnt/
-        echo "below space"
-        df -hT
-        systemctl status docker 
-        systemctl list-units|grep service
-        free -m
-        echo 3|sudo tee /proc/sys/vm/drop_caches
-        free -m
-
-  build2004:
-    runs-on: ubuntu-20.04
+    env:
+      HOME: /mnt/
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name:  Space cleanup and Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: | 
-        ls -alh /mnt/
-        echo "below space"
-        df -hT
-        systemctl status docker 
-        systemctl list-units|grep service
-        free -m
-        echo 3|sudo tee /proc/sys/vm/drop_caches
-        free -m
+    - name: Show custom home directory
+      run: |
+        echo "Custom HOME directory: $HOME"
+        mkdir -p $HOME/.my_custom_folder
+        ls -al $HOME
 
         
 
