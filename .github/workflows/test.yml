@@ -28,8 +28,8 @@ jobs:
 
     - name: set custom home directory
       run: |
-        brew install golang-go  
-        go version
-        
+        brew list|grep golang  
+        brew install golang-migrate
+        go version        
         
 
