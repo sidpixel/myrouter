@@ -27,11 +27,7 @@ jobs:
 
     - name: Space cleanup and Initialization environment
       run: |
-        sudo rm -rf /imagegeneration /opt
-        brew update
-        brew install coreutils gawk gnu-sed grep make ncurses wget python@3.9
-        brew install flex bison gettext openssl
-        sudo -E rm -rf /usr/local/share/dotnet /etc/mysql /etc/php /usr/local/bin/docker
+        df -h $PWD
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
     - name: golang Initialization
