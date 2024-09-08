@@ -38,7 +38,8 @@ jobs:
         sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.1.linux-amd64.tar.gz
         /usr/local/go/bin/go version
         which go
-
+        echo  ”print go version"
+        go version
 
         
 
