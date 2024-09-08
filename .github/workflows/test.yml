@@ -48,7 +48,10 @@ jobs:
         gettext git libncurses-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
         file wget python2 gcc upx-ucl rustc cargo golang-go
         sudo -E timedatectl set-timezone "Asia/Shanghai"
-
+    - name: check go version
+      working-directory: /mnt/myspace
+      run: |
+        go version
     - name: Clone source code
       working-directory: /mnt/myspace
       run: |
