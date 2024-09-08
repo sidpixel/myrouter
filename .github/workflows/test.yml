@@ -29,7 +29,6 @@ jobs:
       uses: actions/checkout@master
 
     - name: create my space
-      working-directory: /mnt/openwrt
       run: |
         rm -rf /mnt/openwrt
         sudo mkdir -p /mnt/openwrt
