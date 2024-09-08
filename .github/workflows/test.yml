@@ -30,13 +30,13 @@ jobs:
 
     - name: create my space
       run: |
-        sudo rm -rf /mnt/openwrt
-        sudo mkdir -p /mnt/openwrt
-        sudo chown -R  $USER.$USER  /mnt/openwrt
+        sudo rm -rf /mnt/myspace
+        sudo mkdir -p /mnt/myspace
+        sudo chown -R  $USER.$USER  /mnt/myspace
         df -h   $PWD
 
     - name:  Space cleanup and Initialization environment
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |       
@@ -48,14 +48,14 @@ jobs:
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
     - name: Clone source code
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         git clone --single-branch  -b $REPO_BRANCH  $REPO_URL openwrt
         echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
 
 
     - name: Load custom feeds and Load custom configuration
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         #sed -i '$a src-git lienolpkg https://github.com/Lienol/openwrt-packages.git;19.07' feeds.conf.default
         #sed -i '$a src-git lienoluci https://github.com/Lienol/openwrt-luci.git;18.06' feeds.conf.default
@@ -67,14 +67,14 @@ jobs:
         df -h   $PWD
 
     - name: load the  feeds
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         ./scripts/feeds clean 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
     - name: Download package
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
         mv $GITHUB_WORKSPACE/$CONFIG_FILE  .config
@@ -83,23 +83,23 @@ jobs:
 
     
     - name: Compile the firmware
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 ||make -j1 V=s
           
 
     - name: Check space usage
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       if: (!cancelled())
       run: df -hT
 
     - name: Organize files
-      working-directory: /mnt/openwrt
+      working-directory: /mnt/myspace
       run: |
         rm -rf ./artifact/
-        mkdir -p /mnt/artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") /mnt/artifact/
+        mkdir -p artifact
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
         cd ./artifact/
         ls -Ahl
         gzip --best *
@@ -107,12 +107,14 @@ jobs:
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
+      working-directory: /mnt/myspace
       with:
         name: openwrt-firmware
-        path:  /mnt/artifact/
+        path: artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
+      working-directory: /mnt/myspace
       with:
         tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
-        files: /mnt/artifact/*
+        files: artifact/*
