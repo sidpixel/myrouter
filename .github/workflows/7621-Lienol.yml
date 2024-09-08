@@ -11,11 +11,12 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: 19.07
-  RELEASE_VERSION: 19.07
+
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-18.06
+  RELEASE_VERSION: 18.06
   CONFIG_FILE: 7621.config
-  OS_ARCH: Lienol7621
+  OS_ARCH: Official7621
 
  
 
