@@ -45,7 +45,6 @@ jobs:
         sudo add-apt-repository ppa:longsleep/golang-backports
         sudo -E apt update
         sudo -E apt install  golang
-        sudo -E apt install  golang-go
         sudo -E timedatectl set-timezone "Asia/Shanghai"
     - name: check go version
       working-directory: /mnt/myspace
