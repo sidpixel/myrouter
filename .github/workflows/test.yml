@@ -98,8 +98,8 @@ jobs:
       working-directory: /mnt/openwrt
       run: |
         rm -rf ./artifact/
-        mkdir -p ./artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
+        mkdir -p /mnt/artifact
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") /mnt/artifact/
         cd ./artifact/
         ls -Ahl
         gzip --best *
