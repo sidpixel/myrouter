@@ -33,22 +33,7 @@ jobs:
 
     - name: set custom home directory
       run: |
-        df -hT $PWD
-        sudo chown -R $USER:$USER /mnt
-        apt list|grep golang-go
-        sudo apt-get  install golang-go
-    - name: go install env
-      run: |
-        sudo apt install golang-golang-x-crypto-dev
+         go --version
 
-    - name: Show custom home directory
-      run: |
-        pwd
-        ls -alh
-        df -hT $PWD
-        apt list|grep golang-go
-
-    - name: Checkout code
-      uses: actions/checkout@v3
         
 
