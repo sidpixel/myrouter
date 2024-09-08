@@ -30,9 +30,9 @@ jobs:
 
     - name: create my space
       run: |
-        rm -rf /mnt/openwrt
+        sudo rm -rf /mnt/openwrt
         sudo mkdir -p /mnt/openwrt
-        sudo chown -R  $USER.$USER  ./openwrt
+        sudo chown -R  $USER.$USER  /mnt/openwrt
         df -h   $PWD
 
     - name:  Space cleanup and Initialization environment
@@ -107,14 +107,12 @@ jobs:
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
-      working-directory: /mnt/openwrt
       with:
         name: openwrt-firmware
-        path:  artifact/
+        path:  /mnt/artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
-      working-directory: /mnt/openwrt
       with:
         tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
-        files: artifact/*
+        files: /mnt/artifact/*
