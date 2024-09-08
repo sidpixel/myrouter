@@ -22,14 +22,15 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     steps:
 
 
     - name: set custom home directory
       run: |
+        sudo add-apt-repository ppa:longsleep/golang-backports
         sudo apt update
-        sudo apt upgrade
+        sudo apt install golang-go
         go version
 
 
