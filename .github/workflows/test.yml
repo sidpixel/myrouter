@@ -35,6 +35,8 @@ jobs:
       run: |
         go version
         sudo apt list|grep "golang-go"
+        sudo apt update
+        sudo apt upgrade golang-go
 
         
 
