@@ -37,6 +37,7 @@ jobs:
         df -h   $PWD
 
     - name:  Space cleanup and Initialization environment
+      working-directory: /mnt/openwrt
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |       
@@ -90,10 +91,12 @@ jobs:
           
 
     - name: Check space usage
+      working-directory: /mnt/openwrt
       if: (!cancelled())
       run: df -hT
 
     - name: Organize files
+      working-directory: /mnt/openwrt
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact
@@ -105,12 +108,14 @@ jobs:
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
+      working-directory: /mnt/openwrt
       with:
         name: openwrt-firmware
         path:  artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
+      working-directory: /mnt/openwrt
       with:
         tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
         files: artifact/*
