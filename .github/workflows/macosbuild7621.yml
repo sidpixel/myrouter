@@ -28,7 +28,8 @@ jobs:
         rm -rf ./*
         sysctl -n hw.ncpu
         df -h $PWD
-        brew install find go patch fileutils seq awk getopt stat
+        which find
+        brew install  go patch fileutils seq awk getopt stat
     - name: Checkout
       uses: actions/checkout@master
 
