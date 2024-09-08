@@ -28,14 +28,10 @@ jobs:
         rm -rf ./*
         sysctl -n hw.ncpu
         df -h $PWD
+        brew install find go patch fileutils seq awk getopt stat
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: golang Initialization
-      run: |
-        wget https://go.dev/dl/go1.23.1.darwin-amd64.tar.gz
-        sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.1.darwin-amd64.tar.gz
-        sudo ln -s /usr/local/go/bin/go /usr/local/bin/go
 
     - name: Clone source code
       run: |
