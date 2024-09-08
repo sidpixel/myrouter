@@ -29,7 +29,7 @@ jobs:
     - name: set custom home directory
       run: |
         brew install go
-        go version
-        sysctl -n hw.ncpu        
+        pwd
+        ls -alh        
         
 
