@@ -23,11 +23,6 @@ env:
 jobs:
   build:
     runs-on: macos-latest
-
-    env:
-      HOME: /mnt
-      GITHUB_WORKSPACE: /mnt
-
     steps:
 
 
