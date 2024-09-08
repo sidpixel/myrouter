@@ -34,7 +34,7 @@ jobs:
     - name: set custom home directory
       run: |
         go version
-        apt list|golang-go
+        sudo apt list|grep "golang-go"
 
         
 
