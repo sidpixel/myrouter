@@ -28,7 +28,7 @@ jobs:
     - name: Space cleanup and Initialization environment
       run: |
         df -h $PWD
-        sudo -E timedatectl set-timezone "Asia/Shanghai"
+        rm -rf ./*
 
     - name: golang Initialization
       run: |
