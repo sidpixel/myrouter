@@ -28,9 +28,6 @@ jobs:
 
     - name: set custom home directory
       run: |
-        brew install go
-        pwd
-        ls -alh
         sudo rm -rf /System/Volumes/Data/*       
         df -h
 
