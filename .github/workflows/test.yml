@@ -28,6 +28,6 @@ jobs:
 
     - name: set custom home directory
       run: |
-        apt install upx-ucl rustc cargo
+        sudo apt install upx-ucl rustc cargo
 
 
