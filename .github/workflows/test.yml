@@ -28,7 +28,7 @@ jobs:
 
     - name: set custom home directory
       run: |
-        brew install golang-migrate
+        brew install go
         go version        
         
 
