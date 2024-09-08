@@ -22,13 +22,13 @@ jobs:
     runs-on: macos-latest  # Updated to use macOS
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
     - name: Space cleanup and Initialization environment
       run: |
         df -h $PWD
         rm -rf ./*
+        df -h $PWD
+    - name: Checkout
+      uses: actions/checkout@master
 
     - name: golang Initialization
       run: |
