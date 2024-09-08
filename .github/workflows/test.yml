@@ -28,10 +28,10 @@ jobs:
 
     - name: set custom home directory
       run: |
-        sudo rm -rf $GITHUB_WORKSPACE/*
-        sudo rm -rf ~/Library/Caches/*
-        sudo brew cleanup
-        sudo brew autoremove
+        rm -rf $GITHUB_WORKSPACE/*
+        rm -rf ~/Library/Caches/*
+        brew cleanup
+        brew autoremove
         df -h
 
 
