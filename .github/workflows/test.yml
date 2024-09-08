@@ -34,9 +34,11 @@ jobs:
     - name: set custom home directory
       run: |
         go version
-        sudo apt list|grep "golang-go"
-        sudo apt update
-        sudo apt upgrade golang-go
+        wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
+        rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.1.linux-amd64.tar.gz
+        export PATH=$PATH:/usr/local/go/bin
+        go version
+
 
         
 
