@@ -33,8 +33,8 @@ jobs:
 
     - name: set custom home directory
       run: |
-         go version
-         apt list|golang-go
+        go version
+        apt list|golang-go
 
         
 
