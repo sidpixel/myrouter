@@ -26,6 +26,7 @@ jobs:
       run: |
         df -h $PWD
         rm -rf ./*
+        sysctl -n hw.ncpu
         df -h $PWD
     - name: Checkout
       uses: actions/checkout@master
