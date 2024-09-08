@@ -15,7 +15,7 @@ env:
   REPO_BRANCH: 19.07
   RELEASE_VERSION: 19.07
   CONFIG_FILE: 7621.config
-  OS_ARCH: Official7621
+  OS_ARCH: lienol7621
 
  
 
