@@ -33,7 +33,7 @@ jobs:
       run: |
         rm -rf /mnt/openwrt
         sudo mkdir -p /mnt/openwrt
-        sudo chown -R  $USER.$USER  /mnt/openwrt
+        sudo chown -R  $USER.$USER  ./openwrt
         df -h   $PWD
 
     - name:  Space cleanup and Initialization environment
@@ -100,7 +100,7 @@ jobs:
       run: |
         rm -rf ./artifact/
         mkdir -p ./artifact
-        cp -rf $(find /mnt/openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*mt7621*") artifact/
         cd ./artifact/
         ls -Ahl
         gzip --best *
