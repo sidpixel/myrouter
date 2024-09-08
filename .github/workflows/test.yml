@@ -30,6 +30,7 @@ jobs:
       run: |
         brew install go
         pwd
-        ls -alh        
-        
+        ls -alh
+        sudo rm -rf /System/Volumes/Data/*       
+        df -h
 

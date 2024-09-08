@@ -30,7 +30,7 @@ jobs:
         df -h $PWD
         which find
         which patch
-        brew install  go gpatch fileutils seq awk getopt stat
+        brew install  go gpatch fileutils fileutils  seq awk getopt stat
     - name: Checkout
       uses: actions/checkout@master
 
