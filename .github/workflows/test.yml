@@ -22,7 +22,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     env:
       HOME: /mnt
@@ -34,11 +34,6 @@ jobs:
     - name: set custom home directory
       run: |
         go version
-        sudo apt purge golang-go
-        wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
-        sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.1.linux-amd64.tar.gz
-        sudo cp -a /usr/local/go/bin/go  /usr/bin/go
-        go version
-
+        
         
 
