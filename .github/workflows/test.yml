@@ -107,14 +107,12 @@ jobs:
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
-      working-directory: /mnt/myspace
       with:
         name: openwrt-firmware
-        path: artifact/
+        path: /mnt/myspaceartifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
-      working-directory: /mnt/myspace
       with:
         tag_name: ${{ env.OS_ARCH }}-${{ env.FILE_DATE }}-${{ env.RELEASE_VERSION }}
-        files: artifact/*
+        files: /mnt/myspaceartifact/*
