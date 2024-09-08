@@ -28,6 +28,7 @@ jobs:
 
     - name: set custom home directory
       run: |
+        sysctl -n hw.ncpu  
         rm -rf $GITHUB_WORKSPACE/*
         rm -rf ~/Library/Caches/*
         brew cleanup
