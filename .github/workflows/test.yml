@@ -33,7 +33,7 @@ jobs:
         sudo rm -rf /mnt/myspace
         sudo mkdir -p /mnt/myspace
         sudo chown -R  $USER.$USER  /mnt/myspace
-        df -h   $PWD
+        df -h  
 
     - name:  Space cleanup and Initialization environment
       working-directory: /mnt/myspace
@@ -64,7 +64,7 @@ jobs:
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps
         
         cat feeds.conf.default
-        df -h   $PWD
+        df -h  
 
     - name: load the  feeds
       working-directory: /mnt/myspace
