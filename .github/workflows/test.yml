@@ -42,21 +42,7 @@ jobs:
             release_version: 18.06
             os_arch: immort8632
             os_type: x86-generic
-          - platform: lienol_mipsel_7621
-            config_file: 7621.config
-            repo_url: https://github.com/Lienol/openwrt
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol7621
-            os_type: mt7621            
-          - platform: immortal_mipsel_7621
-            config_file: 7621.config          	
-            repo_url: https://github.com/immortalwrt/immortalwrt
-            config_file: 7621.config
-            repo_branch: openwrt-18.06
-            release_version: 18.06
-            os_arch: immortal7621
-            os_type: mt7621
+
 
             
          
