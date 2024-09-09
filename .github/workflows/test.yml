@@ -13,18 +13,9 @@ on:
   workflow_dispatch:
   
 jobs: 
-  job_check:
-    runs-on: ubuntu-latest
-    name: Check Version
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-          ref: 'master'
-
   job_build_firmware:
     runs-on: ubuntu-latest
+
     name: build (${{ matrix.platform }})
     strategy:
       fail-fast: false
@@ -64,10 +55,10 @@ jobs:
 
     steps:
     - name: Checkout
-        uses: actions/checkout@main
-        with:
-          fetch-depth: 1
-          ref: 'master'
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 1
+        ref: 'master'
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
