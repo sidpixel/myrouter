@@ -74,7 +74,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: change golang version
-      working-directory: ./openwrt
+      working-directory: /mnt/src/openwrt
       run: |
         rm -rf feeds/packages/lang/golang
         git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
