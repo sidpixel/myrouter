@@ -39,6 +39,9 @@ jobs:
           - platform: immort_i386_pentium4
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
+            release_version: 18.06
+            os_arch: immort8632
+            os_type: x86-generic
 
             
          
