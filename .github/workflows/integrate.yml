@@ -112,7 +112,10 @@ jobs:
         path: |
           /mnt/src/openwrt/dl
           /mnt/src/openwrt/.config
-        key: allpackages
+        key: ${{ matrix.os_type }}-${{ hashFiles('/mnt/src/openwrt/*.config') }}
+        restore-keys: |
+          ${{ matrix.os_type }}-
+
       
     - name: ${{ matrix.platform }} Download package
       if: steps.cache-pkg.outputs.cache-hit != 'true'
