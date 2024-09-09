@@ -63,6 +63,11 @@ jobs:
             os_type: mt7621
 
     steps:
+    - name: Checkout
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+          ref: 'master'
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
