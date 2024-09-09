@@ -105,8 +105,17 @@ jobs:
         rm -rf feeds/packages/lang/golang
         git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
        
-           
+    - name: Cache OpenWrt download packages
+      id: cache-pkg
+      uses: actions/cache@v3
+      with:
+        path: |
+          /mnt/src/openwrt/dl
+          /mnt/src/openwrt/.config
+        key: allpackages
+      
     - name: ${{ matrix.platform }} Download package
+      if: steps.cache-pkg.outputs.cache-hit != 'true'
       working-directory: /mnt/src/openwrt
       run: |
         sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
