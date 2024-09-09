@@ -70,8 +70,8 @@ jobs:
     - name:  ${{ matrix.platform }} Compile the firmware
       working-directory: /mnt/src/openwrt
       run: |
-        mkdir -pv openwrt/bin/gargets/1/1
-        touch  openwrt/bin/gargets/1/1/${{ matrix.os_type }}.img
+        mkdir -pv bin/gargets/1/1
+        touch  bin/gargets/1/1/${{ matrix.os_type }}.img
           
     - name: Check space usage
       working-directory: /mnt/src
