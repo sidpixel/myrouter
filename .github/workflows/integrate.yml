@@ -134,10 +134,11 @@ jobs:
         cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*${{ matrix.os_type }}*") ${{ matrix.os_arch }}/
         cd ${{ matrix.os_arch }}
         gzip --best *
+
     - name: Upload firmware directory
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       with:
-        name: openwrt-firmware
+        name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
         path: /mnt/src/${{ matrix.os_arch }}/
 
     - name: Create release
