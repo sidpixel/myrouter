@@ -89,7 +89,7 @@ jobs:
         gzip --best *
         ls -alh
     - name: Upload firmware directory
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@main
       with:
         name: openwrt-firmware
         path: /mnt/src/${{ matrix.os_arch }}/
