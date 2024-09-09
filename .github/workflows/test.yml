@@ -31,6 +31,7 @@ jobs:
       matrix:
         include:  
           - platform: lienol_i386_pentium4
+            config_file: 8632.config
             repo_url: https://github.com/Lienol/openwrt
             repo_branch: 19.07
             release_version: 19.07
@@ -38,6 +39,7 @@ jobs:
             os_type: x86-generic
 
           - platform: immort_i386_pentium4
+            config_file: 8632.config
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
             release_version: 18.06
@@ -51,11 +53,15 @@ jobs:
             release_version: 19.07
             os_arch: lienol7621
             os_type: mt7621
-            
 
+          - platform: immortal_mipsel_7621
+            config_file: 7621.config
+            repo_url: https://github.com/immortalwrt/immortalwrt
+            repo_branch: openwrt-18.06
+            release_version: 18.06
+            os_arch: immortal7621
+            os_type: mt7621
 
-            
-         
     steps:
     - name: create my space
       run: |
