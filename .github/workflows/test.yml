@@ -62,7 +62,7 @@ jobs:
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
-        sudo mkdir -p /mnt/src
+        sudo mkdir -p /mnt/src/openwrt
         sudo chown -R  $USER.$USER  /mnt/src
         df -h  
     
@@ -70,8 +70,8 @@ jobs:
     - name:  ${{ matrix.platform }} Compile the firmware
       working-directory: /mnt/src/openwrt
       run: |
-        mkdir -pv bin/gargets/1/1
-        touch  bin/gargets/1/1/${{ matrix.os_type }}.img
+        mkdir -pv bin/targets/1/1
+        touch  bin/targets/1/1/${{ matrix.os_type }}.img
           
     - name: Check space usage
       working-directory: /mnt/src
