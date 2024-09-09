@@ -90,7 +90,8 @@ jobs:
         git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
-        
+        git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
+
     - name: ${{ matrix.platform }} load the  feeds
       working-directory: /mnt/src/openwrt
       run: |
