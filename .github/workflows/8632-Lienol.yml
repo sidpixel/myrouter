@@ -71,7 +71,6 @@ jobs:
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps
         git clone  --single-branch  https://github.com/vernesong/OpenClash.git  package/OpenClash
-        rm -rf  package/passwall-deps/sing-box
         cat feeds.conf.default    
 
     - name: load the  feeds
@@ -80,6 +79,11 @@ jobs:
         ./scripts/feeds clean 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+    - name: change golang version
+      working-directory: ./openwrt
+      run: |
+        rm -rf feeds/packages/lang/golang
+        git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
 
     - name: Download package
       working-directory: ./openwrt
