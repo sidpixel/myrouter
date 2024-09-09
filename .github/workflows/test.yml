@@ -32,10 +32,10 @@ jobs:
         include:  
           - platform: lienol_i386_pentium4
             repo_url: https://github.com/Lienol/openwrt
-
+            repo_branch: 19.07
           - platform: immort_i386_pentium4
             repo_url: https://github.com/immortalwrt/immortalwrt
-
+            repo_branch: openwrt-18.06
 
             
          
