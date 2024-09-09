@@ -33,6 +33,9 @@ jobs:
           - platform: lienol_i386_pentium4
             repo_url: https://github.com/Lienol/openwrt
             repo_branch: 19.07
+            release_version: 19.07
+            os_arch: lienol8632
+            os_type: x86-generic
           - platform: immort_i386_pentium4
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
