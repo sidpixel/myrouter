@@ -31,7 +31,11 @@ jobs:
       matrix:
         include:  
           - platform: lienol_i386_pentium4
+            repo_url: https://github.com/Lienol/openwrt
+
           - platform: immort_i386_pentium4
+            repo_url: https://github.com/immortalwrt/immortalwrt
+
 
             
          
