@@ -128,22 +128,20 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        rm -rf ./artifact/
-        mkdir -p artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*${{ matrix.os_type }}*") artifact/
-        cd ./artifact/
-        ls -Ahl
+        rm -rf ./${{ matrix.os_arch }}/
+        mkdir -p ${{ matrix.os_arch }}
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*${{ matrix.os_type }}*") ${{ matrix.os_arch }}/
+        cd ${{ matrix.os_arch }}
         gzip --best *
-        ls -Ahl
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
       with:
         name: openwrt-firmware
-        path: /mnt/src/artifact/
+        path: /mnt/src/${{ matrix.os_arch }}/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ matrix.os_arch }}-${{ env.FILE_DATE }}-${{ matrix.release_version }}
-        files: /mnt/src/artifact/*
+        files: /mnt/src/${{ matrix.os_arch }}/*
   
