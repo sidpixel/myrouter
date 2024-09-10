@@ -91,6 +91,7 @@ jobs:
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
+        cat feeds.conf.default     
 
     - name: ${{ matrix.platform }} load the  feeds
       working-directory: /mnt/src/openwrt
@@ -104,7 +105,6 @@ jobs:
       run: |
         rm -rf feeds/packages/lang/golang
         git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
-        cat feeds.conf.default     
     - name: ${{ matrix.platform }} Download package
       working-directory: /mnt/src/openwrt
       run: |
@@ -146,5 +146,3 @@ jobs:
         tag_name: ${{ matrix.os_arch }}-${{ env.FILE_DATE }}-${{ matrix.release_version }}
         files: /mnt/src/${{ matrix.os_arch }}/*
   
-
->>>>>>> 64b3e612cf12d2f48a0736af8e0f738d7f73cc0b
