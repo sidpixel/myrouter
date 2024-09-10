@@ -23,7 +23,7 @@ jobs:
         include:  
           - platform: lienol_i386_pentium4
             config_file: 8632.config
-            repo_url: https://github.com/sidpixel/openwrt
+            repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
             release_version: 19.07
             os_arch: lienol8632
