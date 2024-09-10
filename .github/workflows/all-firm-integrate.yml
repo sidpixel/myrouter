@@ -59,7 +59,7 @@ jobs:
 
     steps:
     - name: F or T
-      if: ${{ matrix.wheel == 'true' }}
+      if: ${{ matrix.wheel != 'true' }}
       run: |
         echo "exit the workflow"
         exit 1
