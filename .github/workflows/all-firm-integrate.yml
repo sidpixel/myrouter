@@ -60,7 +60,7 @@ jobs:
     steps:
 
     - name: Skip build if wheel is false
-      if: matrix.wheel
+      if: !matrix.wheel
       run:  exit 1
       
     - name: Checkout
