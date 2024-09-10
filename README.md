@@ -1,9 +1,4 @@
-# AutoBuild-OpenWrt
 
-Build OpenWrt firware [Lienol's OpenWrt 19.07](https://github.com/Lienol/openwrt) using GitHub Actions
-Build OpenWrt firware [Immortalwrt's OpenWrt 18.06](https://github.com/immortalwrt/immortalwrt) using GitHub Actions  
-
-Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/
 
 ## Usage
 
@@ -14,5 +9,14 @@ Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenW
 - The build starts automatically. Progress can be viewed on the Actions page.
 - When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
 - Default Web Admin IP: `10.0.0.1`, username `root`，password `password`
+
+
+
+
+# AutoBuild
+
+Build OpenWrt firware [Lienol's OpenWrt 19.07](https://github.com/Lienol/openwrt) using GitHub Actions
+Build OpenWrt firware [Immortalwrt's OpenWrt 18.06](https://github.com/immortalwrt/immortalwrt) using GitHub Actions  
+Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/
 
 
