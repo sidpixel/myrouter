@@ -6,7 +6,7 @@
 # Author: sidpixel
 #=================================================
 
-name: intergrate 8632 and 7621 firm
+name: all firmware intergrate 8632 and 7621 firm
 
 on:
   repository_dispatch:
