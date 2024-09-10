@@ -61,7 +61,7 @@ jobs:
 
     - name: Skip build if wheel is false
       if: ${{ matrix.wheel == 'false' }}
-      run: echo "Skipping this job because wheel is set to false." && exit 0
+      run: echo "Skipping this job because wheel is set to false." && exit 1
       
     - name: Checkout
       uses: actions/checkout@main
