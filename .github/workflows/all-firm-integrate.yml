@@ -59,7 +59,7 @@ jobs:
 
     steps:
     - name: F or T
-      if: !matrix.wheel
+      if: matrix.wheel == 'false'
       run: exit 1
       
     - name: Checkout
