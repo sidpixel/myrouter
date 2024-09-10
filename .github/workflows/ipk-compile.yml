@@ -15,12 +15,6 @@ name: "8632 ipks Auto compile with op SDK"
 on:
   repository_dispatch:
   workflow_dispatch:
- 
-  push:
-    branches:
-      - 'master'
-    paths:
-      - 'README.md'
 
 env:
   TZ: Asia/Shanghai
