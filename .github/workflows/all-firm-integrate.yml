@@ -114,13 +114,13 @@ jobs:
       run: |
         rm -rf feeds/packages/lang/golang
         git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
-    - name: ${{ matrix.platform }} Download package
+    - name: ${{ matrix.platform }} x86 gateway address change
       working-directory: /mnt/src/openwrt
       if: matrix.os_type == 'x86-generic'
       run: |
         sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
 
-    - name: ${{ matrix.platform }} Download package
+    - name: ${{ matrix.platform }} ramchips gateway address change
       working-directory: /mnt/src/openwrt
       if: matrix.os_type == 'mt7621'
       run: |
