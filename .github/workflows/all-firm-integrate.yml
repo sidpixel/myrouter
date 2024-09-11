@@ -129,6 +129,7 @@ jobs:
     - name: ${{ matrix.platform }} Download package
       working-directory: /mnt/src/openwrt
       run: |
+        sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  .config
         make defconfig -j$(nproc)
         make download -j$(nproc)
