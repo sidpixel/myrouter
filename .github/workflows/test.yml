@@ -19,25 +19,16 @@ jobs:
     name: build (${{ matrix.platform }})
     strategy:
       fail-fast: false
-      matrix:
-        include:  
-          - platform: immort
-            wheel: true
-            config_file: [8632.config,7621clash.config,7621pw.config]
-            repo_url: https://github.com/immortalwrt/immortalwrt
-            repo_branch: openwrt-18.06
-            release_version: 18.06
-            os_arch: [immort8632,immort7621-pw,immort7621-clash]
-            os_type: [x86-generic,mt7621]
+      matrix: 
+        platform: immort
+        wheel: true
+        config_file: [8632.config,7621clash.config,7621pw.config]
+        repo_url: https://github.com/immortalwrt/immortalwrt
+        repo_branch: openwrt-18.06
+        release_version: 18.06
+        os_arch: [immort8632,immort7621-pw,immort7621-clash]
+        os_type: [x86-generic,mt7621]
 
-          - platform: lienol
-            wheel: true
-            config_file: [8632.config,7621clash.config,7621pw.config]
-            repo_url: https://github.com/Lienol/openwrt
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: [lienol8632,lienol8632-pw,lienol7621-clash]
-            os_type: [x86-generic,mt7621]
 
 
     steps:
