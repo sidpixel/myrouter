@@ -42,7 +42,7 @@ jobs:
           - platform: lienol_7621_clash
             wheel: true
             config_file: 7621clash.config
-            repo_url: https://github.com/Lienol/op
+            repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
             release_version: 19.07
             os_arch: lienol7621-clash
@@ -51,7 +51,7 @@ jobs:
           - platform: lienol_7621_passwall
             wheel: true
             config_file: 7621pw.config
-            repo_url: https://github.com/Lienol/op
+            repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
             release_version: 19.07
             os_arch: lienol7621
