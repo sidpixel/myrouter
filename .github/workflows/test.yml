@@ -26,19 +26,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [immort,lienol]
+        platform: [immort1806,lienol1907]
         config_file: [8632.config,7621clash.config,7621pw.config]
         include:
-          - platform: immort
+          - platform: immort1806
             wheel: true
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
-            release_version: 18.06
-          - platform: lienol
+          - platform: lienol1907
             wheel: true
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-            release_version: 19.07
           - config_file: 8632.config
             os_type: x86-generic
             os_arch: x86-generic
@@ -159,6 +157,6 @@ jobs:
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}-${{ matrix.release_version }}
+        tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
         files: /mnt/src/${{ matrix.os_arch }}/*
   
