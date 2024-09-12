@@ -21,50 +21,24 @@ jobs:
       fail-fast: false
       matrix:
         include:  
-          - platform: lienol_i386_pentium4
+          - platform: immort
             wheel: true
-            config_file: 8632.config
-            repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol8632
-            os_type: x86-generic
-
-          - platform: immort_i386_pentium4
-            wheel: true
-            config_file: 8632.config
+            config_file: [8632.config,7621clash.config,7621pw.config]
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
             release_version: 18.06
-            os_arch: immort8632
-            os_type: x86-generic
+            os_arch: [immort8632,immort7621-pw,immort7621-clash]
+            os_type: [x86-generic,mt7621]
 
-          - platform: lienol_mipsel_7621
+          - platform: lienol
             wheel: true
-            config_file: 7621clash.config
+            config_file: [8632.config,7621clash.config,7621pw.config]
             repo_url: https://github.com/Lienol/openwrt
             repo_branch: 19.07
             release_version: 19.07
-            os_arch: lienol7621-clash
-            os_type: mt7621
-            
-          - platform: lienol_mipsel_7621
-            wheel: true
-            config_file: 7621pw.config
-            repo_url: https://github.com/Lienol/openwrt
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol7621
-            os_type: mt7621
+            os_arch: [lienol8632,lienol8632-pw,lienol7621-clash]
+            os_type: [x86-generic,mt7621]
 
-          - platform: immortal_mipsel_7621
-            wheel: true
-            config_file: 7621pw.config
-            repo_url: https://github.com/immortalwrt/immortalwrt
-            repo_branch: openwrt-18.06
-            release_version: 18.06
-            os_arch: immortal7621
-            os_type: mt7621
 
     steps:
 
