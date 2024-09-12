@@ -151,7 +151,7 @@ jobs:
       run: |
         rm -rf ./${{ matrix.os_arch }}/
         mkdir -p ${{ matrix.os_arch }}
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name "*${{ matrix.os_type }}*") ${{ matrix.os_arch }}/
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   ${{ matrix.os_arch }}/
         cd ${{ matrix.os_arch }}
         gzip --best *
 
