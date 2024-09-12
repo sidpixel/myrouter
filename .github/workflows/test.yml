@@ -11,6 +11,12 @@ name: test
 on:
   repository_dispatch:
   workflow_dispatch:
+
+env:
+  platform: immort
+  repo_url: https://github.com/immortalwrt/immortalwrt
+  repo_branch: openwrt-18.06
+  release_version: 18.06
   
 jobs: 
   job_build_firmware:
@@ -19,15 +25,28 @@ jobs:
     name: build (${{ matrix.platform }})
     strategy:
       fail-fast: false
-      matrix: 
-        platform: immort
-        wheel: true
+      matrix:
+        platform: [immort,lienol]
         config_file: [8632.config,7621clash.config,7621pw.config]
-        repo_url: https://github.com/immortalwrt/immortalwrt
-        repo_branch: openwrt-18.06
-        release_version: 18.06
-        os_arch: [immort8632,immort7621-pw,immort7621-clash]
-        os_type: [x86-generic,mt7621]
+        include:
+          - platform: immort
+            repo_url: https://github.com/immortalwrt/immortalwrt
+            repo_branch: openwrt-18.06
+            release_version: 18.06
+          - platform: lienol
+            repo_url: https://github.com/sidpixel/op
+            repo_branch: 19.07
+            release_version: 19.07
+          - config_file: 8632.config
+            os_type: x86-generic
+            os_arch: x86-generic
+          - config_file: 7621clash.config
+            os_arch: 7621-clash
+            os_type: mt7621
+          - config_file: 7621pw.config
+            os_arch: 7621-passwall
+            os_type: mt7621
+
 
 
 
