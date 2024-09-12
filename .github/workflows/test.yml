@@ -12,11 +12,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
-env:
-  platform: immort
-  repo_url: https://github.com/immortalwrt/immortalwrt
-  repo_branch: openwrt-18.06
-  release_version: 18.06
+
   
 jobs: 
   job_build_firmware:
@@ -142,21 +138,21 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        rm -rf ./${{ matrix.os_arch }}/
-        mkdir -p ${{ matrix.os_arch }}
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   ${{ matrix.os_arch }}/
-        cd ${{ matrix.os_arch }}
+        rm -rf ./${{ matrix.plarform }}-${{ matrix.os_arch }}/
+        mkdir -p ${{ matrix.plarform }}-${{ matrix.os_arch }}
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   ${{ matrix.plarform }}-${{ matrix.os_arch }}/
+        cd ${{ matrix.plarform }}-${{ matrix.os_arch }}
         gzip --best *
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
         name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/${{ matrix.os_arch }}/
+        path: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
-        files: /mnt/src/${{ matrix.os_arch }}/*
+        files: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/*
   
