@@ -41,7 +41,16 @@ jobs:
 
           - platform: lienol_mipsel_7621
             wheel: true
-            config_file: 7621.config
+            config_file: 7621clash.config
+            repo_url: https://github.com/Lienol/openwrt
+            repo_branch: 19.07
+            release_version: 19.07
+            os_arch: lienol7621-clash
+            os_type: mt7621
+            
+          - platform: lienol_mipsel_7621
+            wheel: true
+            config_file: 7621pw.config
             repo_url: https://github.com/Lienol/openwrt
             repo_branch: 19.07
             release_version: 19.07
@@ -50,7 +59,7 @@ jobs:
 
           - platform: immortal_mipsel_7621
             wheel: true
-            config_file: 7621.config
+            config_file: 7621pw.config
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
             release_version: 18.06
