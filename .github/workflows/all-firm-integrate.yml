@@ -39,7 +39,7 @@ jobs:
             os_arch: immort8632
             os_type: x86-generic
 
-          - platform: lienol_mipsel_7621
+          - platform: lienol_7621_clash
             wheel: true
             config_file: 7621clash.config
             repo_url: https://github.com/Lienol/op
@@ -48,7 +48,7 @@ jobs:
             os_arch: lienol7621-clash
             os_type: mt7621
             
-          - platform: lienol_mipsel_7621
+          - platform: lienol_7621_passwall
             wheel: true
             config_file: 7621pw.config
             repo_url: https://github.com/Lienol/op
