@@ -90,9 +90,8 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        rm -rf ./artifact/
-        mkdir -p artifact
-        cp -a openwrt/*  artifact/
+        mkdir -p ${{ matrix.platform }}-artifact
+        cp -a openwrt/*  ${{ matrix.platform }}-artifact/
         cd artifact
         gzip --best *
 
@@ -100,11 +99,11 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/artifact/
+        path: /mnt/src/${{ matrix.platform }}-artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
-        files: /mnt/src/artifact/*
+        files: /mnt/src/${{ matrix.platform }}-artifact/*
   
