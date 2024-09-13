@@ -6,7 +6,7 @@
 # Author: sidpixel
 #=================================================
 
-name: test firmware
+name: all firmware build
 
 
 on:
