@@ -6,11 +6,14 @@
 # Author: sidpixel
 #=================================================
 
-name: all firmware intergrate 8632 and 7621 firm
+name: test firmware
+
 
 on:
   repository_dispatch:
   workflow_dispatch:
+
+
   
 jobs: 
   job_build_firmware:
@@ -20,51 +23,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:  
-          - platform: lienol_i386_pentium4
+        platform: [immort1806,lienol1907]
+        config_file: [8632_config,7621clash_config,7621pw_config]
+        include:
+          - platform: immort1806
             wheel: true
-            config_file: 8632.config
-            repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol8632
-            os_type: x86-generic
-
-          - platform: immort_i386_pentium4
-            wheel: true
-            config_file: 8632.config
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
-            release_version: 18.06
-            os_arch: immort8632
+          - platform: lienol1907
+            wheel: true
+            repo_url: https://github.com/sidpixel/op
+            repo_branch: 19.07
+          - config_file: 8632_config
             os_type: x86-generic
-
-          - platform: lienol_7621_clash
-            wheel: true
-            config_file: 7621clash.config
-            repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol7621-clash
+          - config_file: 7621clash_config
             os_type: mt7621
-            
-          - platform: lienol_7621_passwall
-            wheel: true
-            config_file: 7621pw.config
-            repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
-            release_version: 19.07
-            os_arch: lienol7621
+          - config_file: 7621pw_config
             os_type: mt7621
 
-          - platform: immortal_mipsel_7621
-            wheel: true
-            config_file: 7621pw.config
-            repo_url: https://github.com/immortalwrt/immortalwrt
-            repo_branch: openwrt-18.06
-            release_version: 18.06
-            os_arch: immortal7621
-            os_type: mt7621
+
+
 
     steps:
 
@@ -103,8 +81,6 @@ jobs:
     - name:  ${{ matrix.platform }} Load custom feeds and Load custom configuration
       working-directory: /mnt/src/openwrt
       run: |
-        #sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-        #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
         git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
@@ -151,28 +127,27 @@ jobs:
         make -j$(nproc) || make -j1 ||make -j1 V=s
           
     - name: Check space usage
-      working-directory: /mnt/src
       if: (!cancelled())
       run: df -hT
 
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        rm -rf ./${{ matrix.os_arch }}/
-        mkdir -p ${{ matrix.os_arch }}
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   ${{ matrix.os_arch }}/
-        cd ${{ matrix.os_arch }}
-        gzip --best *
+        rm -rf artifact
+        mkdir -p artifact
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
+        cd artifact
+        gzip --best *  
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
-        name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/${{ matrix.os_arch }}/
+        name: ${{ matrix.platform }}-${{ matrix.config_file }}
+        path: /mnt/src/artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ matrix.os_arch }}-${{ env.FILE_DATE }}-${{ matrix.release_version }}
-        files: /mnt/src/${{ matrix.os_arch }}/*
-  
+        #tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}-${{ env.FILE_DATE }}
+        tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}
+        files: /mnt/src/artifact/*

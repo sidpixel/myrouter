@@ -36,7 +36,6 @@ jobs:
             repo_branch: 19.07
           - config_file: 8632_config
             os_type: x86-generic
-            wheel: false
           - config_file: 7621clash_config
             os_type: mt7621
           - config_file: 7621pw_config
@@ -82,8 +81,6 @@ jobs:
     - name:  ${{ matrix.platform }} Load custom feeds and Load custom configuration
       working-directory: /mnt/src/openwrt
       run: |
-        #sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-        #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
         git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
@@ -141,7 +138,7 @@ jobs:
         cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
         cd artifact
         gzip --best *  
-        
+
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
