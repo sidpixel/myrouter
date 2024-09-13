@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [immort1806,lienol1907]
-        config_file: [8632.config,7621clash.config,7621pw.config]
+        config_file: [8632_config,7621clash_config,7621pw_config]
         include:
           - platform: immort1806
             wheel: false
@@ -34,14 +34,11 @@ jobs:
             wheel: true
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-          - config_file: 8632.config
+          - config_file: 8632_config
             os_type: x86-generic
-            os_arch: x86-generic
-          - config_file: 7621clash.config
-            os_arch: 7621-clash
+          - config_file: 7621clash_config
             os_type: mt7621
-          - config_file: 7621pw.config
-            os_arch: 7621-passwall
+          - config_file: 7621pw_config
             os_type: mt7621
 
 
@@ -139,21 +136,29 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        rm -rf ./${{ matrix.plarform }}-${{ matrix.os_arch }}/
-        mkdir -p ${{ matrix.plarform }}-${{ matrix.os_arch }}
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   ${{ matrix.plarform }}-${{ matrix.os_arch }}/
-        cd ${{ matrix.plarform }}-${{ matrix.os_arch }}
+        rm -rf artifact
+        mkdir -p artifact
+        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
+        cd artifact
         gzip --best *
+
+        
+    - name:  ${{ matrix.platform }} Organize files
+      working-directory: /mnt/src
+      run: |
+        mkdir -p  artifact
+        cp -a openwrt/*  artifact/
+       
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
-        name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/
+        name: ${{ matrix.platform }}-${{ matrix.config_file }}
+        path: /mnt/src/artifact/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
-        files: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/*
-  
+        #tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}-${{ env.FILE_DATE }}
+        tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}
+        files: /mnt/src/artifact/*
