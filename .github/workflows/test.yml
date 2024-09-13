@@ -90,7 +90,7 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        mkdir -p  ./${{ matrix.plarform }}-${{ matrix.os_arch }}
+        mkdir -p  "${{ matrix.plarform }}-${{ matrix.os_arch }}"
         cd ${{ matrix.plarform }}-${{ matrix.os_arch }}
         cp -a openwrt/*  ${{ matrix.platform }}-${{ matrix.os_arch }}/
         gzip --best *
