@@ -36,9 +36,9 @@ jobs:
             repo_branch: 19.07
           - config_file: 8632_config
             os_type: x86-generic
-            wheel: false
           - config_file: 7621clash_config
             os_type: mt7621
+            wheel: false
           - config_file: 7621pw_config
             os_type: mt7621
 
@@ -130,7 +130,6 @@ jobs:
         make -j$(nproc) || make -j1 ||make -j1 V=s
           
     - name: Check space usage
-      working-directory: /mnt/src
       if: (!cancelled())
       run: df -hT
 
