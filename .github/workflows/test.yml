@@ -92,7 +92,7 @@ jobs:
       run: |
         mkdir -p ${{ matrix.platform }}-artifact
         cp -a openwrt/*  ${{ matrix.platform }}-artifact/
-        cd artifact
+        cd ${{ matrix.platform }}-artifact
         gzip --best *
 
     - name: Upload firmware directory
