@@ -36,7 +36,7 @@ jobs:
             repo_branch: 19.07
           - config_file: 8632_config
             os_type: x86-generic
-             wheel: false
+            wheel: false
           - config_file: 7621clash_config
             os_type: mt7621
           - config_file: 7621pw_config
