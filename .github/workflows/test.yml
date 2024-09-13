@@ -91,6 +91,7 @@ jobs:
         mkdir -p  artifact
         cp -a openwrt/*  artifact/
         cd artifact
+        cat 8632blank || cat 7621blank
         gzip --best *
 
     - name: Upload firmware directory
