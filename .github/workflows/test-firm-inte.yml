@@ -38,7 +38,6 @@ jobs:
             os_type: x86-generic
           - config_file: 7621clash_config
             os_type: mt7621
-            wheel: false
           - config_file: 7621pw_config
             os_type: mt7621
 
@@ -140,17 +139,8 @@ jobs:
         mkdir -p artifact
         cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
         cd artifact
-        gzip --best *
-
+        gzip --best *  
         
-    - name:  ${{ matrix.platform }} Organize files
-      working-directory: /mnt/src
-      run: |
-        mkdir -p  artifact
-        cp -a openwrt/*  artifact/
-        cd artifact
-        gzip --best *     
-
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
