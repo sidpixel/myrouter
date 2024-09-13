@@ -26,7 +26,7 @@ jobs:
         config_file: [8632.config,7621clash.config,7621pw.config]
         include:
           - platform: immort1806
-            wheel: false
+            wheel: true
             repo_url: https://github.com/immortalwrt/immortalwrt
             repo_branch: openwrt-18.06
           - platform: lienol1907
