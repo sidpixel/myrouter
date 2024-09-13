@@ -90,20 +90,19 @@ jobs:
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        mkdir -p ${{ matrix.platform }}-artifact
-        cp -a openwrt/*  ${{ matrix.platform }}-artifact/
-        cd ${{ matrix.platform }}-artifact
+        mkdir -p ${{ matrix.plarform }}-${{ matrix.os_arch }}
+        cd ${{ matrix.plarform }}-${{ matrix.os_arch }}
+        cp -a openwrt/*  ${{ matrix.platform }}-${{ matrix.os_arch }}/
         gzip --best *
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
         name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/${{ matrix.platform }}-artifact/
+        path: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/
 
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
-        files: /mnt/src/${{ matrix.platform }}-artifact/*
-  
+        files: /mnt/src/${{ matrix.plarform }}-${{ matrix.os_arch }}/*
