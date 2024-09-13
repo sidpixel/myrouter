@@ -82,6 +82,7 @@ jobs:
       working-directory: /mnt/src/openwrt
       run: |
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  ./
+        echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
     
     
    
