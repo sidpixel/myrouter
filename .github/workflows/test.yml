@@ -60,7 +60,7 @@ jobs:
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
-        sudo mkdir -p /mnt/src
+        sudo mkdir -p /mnt/src/openwrt
         sudo chown -R  $USER.$USER  /mnt/src
         df -h  
 
