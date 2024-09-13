@@ -84,26 +84,19 @@ jobs:
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  ./
         echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
         
-    
-    
-   
-
     - name:  ${{ matrix.platform }} Organize files
       working-directory: /mnt/src
       run: |
-        mkdir -p  ${{ matrix.platform }}-${{ matrix.os_arch }}
-        cp -a openwrt/*  ${{ matrix.platform }}-${{ matrix.os_arch }}/
-        cd ${{ matrix.platform }}-${{ matrix.os_arch }}
+        mkdir -p  artifact
+        cp -a openwrt/*  artifact/
+        cd artifact
         gzip --best *
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
       with:
-        name: ${{ matrix.os_arch }}-${{ matrix.release_version }}-firmware
-        path: /mnt/src/${{ matrix.platform }}-${{ matrix.os_arch }}/
+        name: ${{ matrix.os_arch }}-${{ github.run_id }}
+        path: /mnt/src/artifact/
 
-    - name: Create release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ env.FILE_DATE }}
-        files: /mnt/src/${{ matrix.platform }}-${{ matrix.os_arch }}/*
+    
+   
