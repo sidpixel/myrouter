@@ -94,11 +94,6 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    - name: ${{ matrix.platform }} clone  golang latest version
-      working-directory: /mnt/src/openwrt
-      run: |
-        rm -rf feeds/packages/lang/golang
-        git clone --single-branch https://github.com/sbwml/packages_lang_golang  feeds/packages/lang/golang
     - name: ${{ matrix.platform }} x86 gateway address change
       working-directory: /mnt/src/openwrt
       if: matrix.os_type == 'x86-generic'
