@@ -77,6 +77,7 @@ jobs:
       if: matrix.os_type == 'mt7621'
       run: |
         touch 7621blank
+        echo ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ matrix.config_file }}-${{ matrix.os_type }}
         
     - name: ${{ matrix.platform }} Download package
       working-directory: /mnt/src/openwrt
