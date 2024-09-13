@@ -92,9 +92,8 @@ jobs:
       working-directory: /mnt/src
       run: |
         mkdir -p  ${{ matrix.platform }}-${{ matrix.os_arch }}
-        
-        cd ${{ matrix.platform }}-${{ matrix.os_arch }}
         cp -a openwrt/*  ${{ matrix.platform }}-${{ matrix.os_arch }}/
+        cd ${{ matrix.platform }}-${{ matrix.os_arch }}
         gzip --best *
 
     - name: Upload firmware directory
