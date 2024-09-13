@@ -6,7 +6,7 @@
 # Author: sidpixel
 #=================================================
 
-name: all firmware build
+name: alpha immort all firmware build
 
 
 on:
