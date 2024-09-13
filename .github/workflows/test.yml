@@ -64,11 +64,7 @@ jobs:
         sudo chown -R  $USER.$USER  /mnt/src
         df -h  
 
-    - name:  ${{ matrix.platform }} firmware source code download
-      working-directory: /mnt/src
-      run: |
-        git clone --single-branch  -b ${{ matrix.repo_branch }}  ${{ matrix.repo_url }} openwrt
-        echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
+ 
         
     - name: ${{ matrix.platform }} x86 gateway address change
       working-directory: /mnt/src/openwrt
