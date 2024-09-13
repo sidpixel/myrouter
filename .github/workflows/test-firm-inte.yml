@@ -6,7 +6,8 @@
 # Author: sidpixel
 #=================================================
 
-name: test
+name: test firmware
+
 
 on:
   repository_dispatch:

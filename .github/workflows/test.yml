@@ -6,7 +6,7 @@
 # Author: sidpixel
 #=================================================
 
-name: test
+name: any test
 
 on:
   repository_dispatch:
