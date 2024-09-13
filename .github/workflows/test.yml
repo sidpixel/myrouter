@@ -71,13 +71,14 @@ jobs:
       if: matrix.os_type == 'x86-generic'
       run: |
         touch 8632blank
+         echo ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ matrix.config_file }}-${{ matrix.os_type }}  > 8632blank
 
     - name: ${{ matrix.platform }} ramchips gateway address change
       working-directory: /mnt/src/openwrt
       if: matrix.os_type == 'mt7621'
       run: |
         touch 7621blank
-        echo ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ matrix.config_file }}-${{ matrix.os_type }}
+        echo ${{ matrix.platform }}-${{ matrix.os_arch }}-${{ matrix.config_file }}-${{ matrix.os_type }}  > 7621blank
         
     - name: ${{ matrix.platform }} Download package
       working-directory: /mnt/src/openwrt
@@ -90,9 +91,7 @@ jobs:
       run: |
         mkdir -p  artifact
         cp -a openwrt/*  artifact/
-        cd artifact
-        cat 8632blank || cat 7621blank
-        gzip --best *
+       
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
