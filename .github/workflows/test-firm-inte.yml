@@ -148,7 +148,8 @@ jobs:
       run: |
         mkdir -p  artifact
         cp -a openwrt/*  artifact/
-       
+        cd artifact
+        gzip --best *     
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
