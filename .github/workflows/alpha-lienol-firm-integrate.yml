@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        config_file: [8632_config,8632_config,7621clash_config,7621pw_config]
+        config_file: [8632_config,8632pw_config,7621clash_config,7621pw_config]
         include:
           - platform: lienol1907
           - repo_url: https://github.com/sidpixel/op
@@ -31,7 +31,7 @@ jobs:
 
     steps:
     - name: Skip build if wheel is false
-      #if: matrix.wheel == false
+      if: matrix.wheel == false
       run:  exit 1
       
     - name: Checkout
