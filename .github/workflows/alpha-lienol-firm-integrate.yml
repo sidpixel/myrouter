@@ -80,6 +80,7 @@ jobs:
       run: |
         git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+        git clone --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         cat feeds.conf.default     
