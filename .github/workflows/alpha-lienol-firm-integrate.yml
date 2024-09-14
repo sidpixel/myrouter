@@ -23,13 +23,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [immort1806,lienol1907]
+        platform: lienol1907
         config_file: [8632_config,7621clash_config,7621pw_config]
         include:
-          - platform: immort1806
-            wheel: false
-            repo_url: https://github.com/immortalwrt/immortalwrt
-            repo_branch: openwrt-18.06
           - platform: lienol1907
             wheel: true
             repo_url: https://github.com/sidpixel/op
