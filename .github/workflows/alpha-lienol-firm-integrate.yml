@@ -28,11 +28,10 @@ jobs:
           - repo_url: https://github.com/sidpixel/op
           - repo_branch: 19.07
           - config_file: [8632_config,8632_config]
-            wheel: true
 
     steps:
     - name: Skip build if wheel is false
-      if: matrix.wheel == false
+      #if: matrix.wheel == false
       run:  exit 1
       
     - name: Checkout
