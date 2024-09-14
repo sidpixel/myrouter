@@ -19,7 +19,7 @@ jobs:
   job_build_firmware:
     runs-on: ubuntu-latest
 
-    name: build (${{ matrix.platform }})
+    name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
       matrix: 
