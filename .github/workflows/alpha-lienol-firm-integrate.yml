@@ -17,7 +17,8 @@ on:
   
 jobs: 
   job_build_firmware:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
@@ -25,7 +26,7 @@ jobs:
         config_file: [8632_config,8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
           - platform: lienol1907
-            wheel: false
+            wheel: true
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
           - config_file: 8632pw2_config
