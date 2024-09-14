@@ -25,13 +25,12 @@ jobs:
       matrix:
         platform: lienol1907
         config_file: [8632_config,7621clash_config,7621pw_config]
+        repo_url: https://github.com/sidpixel/op
+        repo_branch: 19.07
         include:
-          - platform: lienol1907
-            wheel: true
-            repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
           - config_file: 8632_config
             os_type: x86-generic
+            wheel: true
           - config_file: 7621clash_config
             os_type: mt7621
           - config_file: 7621pw_config
