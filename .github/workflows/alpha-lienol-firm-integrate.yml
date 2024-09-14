@@ -29,11 +29,13 @@ jobs:
           - repo_url: https://github.com/sidpixel/op
           - repo_branch: 19.07
           - config_file: 8632_config
-            os_type: x86-generic
             wheel: true
+            os_type: x86-generic
           - config_file: 7621clash_config
+            wheel: true
             os_type: mt7621
           - config_file: 7621pw_config
+            wheel: true
             os_type: mt7621
 
 
