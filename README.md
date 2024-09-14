@@ -1,11 +1,5 @@
 
 
-## Differ
-
-- Dropbear up to 2022.82
-- libcap update
-- update golang to 1.23
-
 
 
 
