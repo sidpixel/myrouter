@@ -22,12 +22,12 @@ jobs:
     name: build (${{ matrix.platform }})
     strategy:
       fail-fast: false
-      matrix:
-        platform: lienol1907
+      matrix: 
         config_file: [8632_config,7621clash_config,7621pw_config]
-        repo_url: https://github.com/sidpixel/op
-        repo_branch: 19.07
         include:
+          - platform: lienol1907
+          - repo_url: https://github.com/sidpixel/op
+          - repo_branch: 19.07
           - config_file: 8632_config
             os_type: x86-generic
             wheel: true
