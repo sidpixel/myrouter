@@ -18,7 +18,6 @@ on:
 jobs: 
   job_build_firmware:
     runs-on: ubuntu-latest
-
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
@@ -28,6 +27,8 @@ jobs:
           - platform: lienol1907
           - repo_url: https://github.com/sidpixel/op
           - repo_branch: 19.07
+          - config_file: [8632_config,8632_config]
+            wheel: true
 
     steps:
     - name: Skip build if wheel is false
