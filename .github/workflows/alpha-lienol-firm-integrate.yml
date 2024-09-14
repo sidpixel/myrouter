@@ -22,9 +22,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
+        platform: lienol1907
         config_file: [8632_config,8632pw_config,7621clash_config,7621pw_config]
         include:
-          - platform: lienol1907
+          #- platform: lienol1907
           - repo_url: https://github.com/sidpixel/op
           - repo_branch: 19.07
           - config_file: [8632_config,8632_config]
