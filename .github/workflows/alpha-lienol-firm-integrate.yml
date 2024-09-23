@@ -123,6 +123,6 @@ jobs:
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        #tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}-${{ env.FILE_DATE }}
-        tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}
+        tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}-${{ env.FILE_DATE }}
+        #tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}
         files: /mnt/src/artifact/*
