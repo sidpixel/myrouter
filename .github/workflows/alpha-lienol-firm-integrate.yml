@@ -28,7 +28,7 @@ jobs:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-          #- config_file: 7621pw2_config
+          - config_file: 8632_config
             wheel: true
           
             
@@ -83,7 +83,7 @@ jobs:
         ./scripts/feeds clean 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
+
     - name: ${{ matrix.platform }} clone  golang latest version
       working-directory: /mnt/src/openwrt
       run: |
