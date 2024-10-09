@@ -74,7 +74,7 @@ jobs:
         git clone --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
-        git clone --single-branch https://github.com/sbwml/luci-app-alist package/alist
+        git clone --single-branch -b v3.35.0 https://github.com/sbwml/luci-app-alist package/alist
         cat feeds.conf.default     
 
     - name: load the  feeds
