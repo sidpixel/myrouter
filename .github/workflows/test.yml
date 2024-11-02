@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  PLATFORM: lienol2305
+  PLAT_FORM: lienol2305
   
 jobs: 
   job_build_firmware:
@@ -26,7 +26,7 @@ jobs:
       matrix: 
         config_file: [8632_config,8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
-          - platform: ${{ PLATFORM }}
+          - platform: $PLAT_FORM
             repo_url: https://github.com/Lienol/openwrt
             repo_branch: 23.05
           - config_file: 8632_config
