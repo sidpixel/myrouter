@@ -75,7 +75,7 @@ jobs:
         git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone --single-branch -b lua  https://github.com/sbwml/luci-app-alist package/alist
-        git clone --single-branch -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/easemusic
+        git clone --single-branch -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/easemusic
         cat feeds.conf.default     
 
     - name: load the  feeds
