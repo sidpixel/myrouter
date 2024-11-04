@@ -46,19 +46,14 @@ jobs:
   
 
         
-    - name: Download package
-      if: startwith(matrix.config_file, '8632')
+    - name: 8632 
+      if: contains(matrix.config_file, '8632')
       run: |
-        echo  's/192.168.1.1/10.0.0.1/g' > /tmp/host1
+        echo  's/192.168.1.1/10.0.0.1/g' 
  
-    - name: Download package
-      if: startwith(matrix.config_file, '7621')
+    - name: 7621 
+      if: contains(matrix.config_file, '7621')
       run: |
-        echo 's/192.168.1.1/10.1.1.1/g' > /tmp/host2
-       
-  
-    - name:  Compile the firmware
-      run: |
-        cat /tmp/host1
-        cat /tmp/host2
+        echo 's/192.168.1.1/10.1.1.1/g' 
+
           
