@@ -47,20 +47,17 @@ jobs:
 
         
     - name: Download package
-      working-directory: /mnt/src/openwrt
       if: ${{ matrix.platform }} == '8632'
       run: |
         echo  's/192.168.1.1/10.0.0.1/g' > /tmp/host1
  
     - name: Download package
-      working-directory: /mnt/src/openwrt
       if: ${{ matrix.platform }} == '7621'
       run: |
         echo 's/192.168.1.1/10.1.1.1/g' > /tmp/host2
        
   
     - name:  Compile the firmware
-      working-directory: /mnt/src/openwrt
       run: |
         cat /tmp/host1
         cat /tmp/host2
