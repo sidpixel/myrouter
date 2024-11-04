@@ -13,8 +13,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
-env:
-  PLAT_FORM: lienol2305
+
   
 jobs: 
   job_build_firmware:
@@ -26,10 +25,10 @@ jobs:
       matrix: 
         config_file: [8632_config,8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
-          - platform: lienol2305
-            repo_url: https://github.com/Lienol/openwrt
-            repo_branch: 23.05
-          - config_file: 8632_config
+          - platform: lienol1907
+            repo_url: https://github.com/sidpixel/myrouter
+            repo_branch: 19.07
+          - config_file: 7621pw_config
             wheel: true
           
             
@@ -44,86 +43,25 @@ jobs:
       with:
         fetch-depth: 1
         ref: 'master'
-    - name: create my space
-      run: |
-        sudo rm -rf /mnt/src
-        sudo mkdir -p /mnt/src
-        sudo chown -R  $USER.$USER  /mnt/src
-        df -h  
-    - name:  Space cleanup and Initialization environment
-      working-directory: /mnt/src
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo -E apt update
-        sudo -E apt install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
-        gettext git libncurses-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
-        file wget python2 gcc libfuse-dev
-        sudo -E timedatectl set-timezone "Asia/Shanghai"
+  
 
-    - name:  firmware source code download
-      working-directory: /mnt/src
-      run: |
-        git clone --single-branch  -b ${{ matrix.repo_branch }}  ${{ matrix.repo_url }} openwrt
-        echo "FILE_DATE=$(date +%Y%m%d%H%M)" >>"$GITHUB_ENV"
-        
-    - name:  Load custom feeds and Load custom configuration
-      working-directory: /mnt/src/openwrt
-      run: |
-        git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-        git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
-        git clone --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
-        git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
-        git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
-        git clone --single-branch -b lua  https://github.com/sbwml/luci-app-alist package/alist
-        git clone --single-branch -b js https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/easemusic
-        cat feeds.conf.default     
-
-    - name: load the  feeds
-      working-directory: /mnt/src/openwrt
-      run: |
-        ./scripts/feeds clean 
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
         
     - name: Download package
       working-directory: /mnt/src/openwrt
+      if: ${{ matrix.platform }} == '8632'
       run: |
-        sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
-        sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
-        mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  .config
-        make defconfig -j$(nproc)
-        make download -j$(nproc)
-        df -h
-    
+        echo  's/192.168.1.1/10.0.0.1/g' > /tmp/host1
+ 
+    - name: Download package
+      working-directory: /mnt/src/openwrt
+      if: ${{ matrix.platform }} == '7621'
+      run: |
+        echo 's/192.168.1.1/10.1.1.1/g' > /tmp/host2
+       
+  
     - name:  Compile the firmware
       working-directory: /mnt/src/openwrt
       run: |
-        echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 ||make -j1 V=s
+        cat /tmp/host1
+        cat /tmp/host2
           
-    - name: Check space usage
-      if: (!cancelled())
-      run: df -hT
-
-    - name:  Organize files
-      working-directory: /mnt/src
-      run: |
-        rm -rf artifact
-        mkdir -p artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
-        cd artifact
-        gzip --best *  
-
-    - name: Upload firmware directory
-      uses: actions/upload-artifact@main
-      with:
-        name: ${{ matrix.platform }}-${{ matrix.config_file }}
-        path: /mnt/src/artifact/
-
-    - name: Create release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}-${{ env.FILE_DATE }}
-        #tag_name: ${{ matrix.platform }}-${{ matrix.config_file }}
-        files: /mnt/src/artifact/*
