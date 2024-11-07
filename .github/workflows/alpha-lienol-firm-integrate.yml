@@ -23,12 +23,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        config_file: [8632_config,8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
+        config_file: [x8664_config,x8632_config,x8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-          - config_file: 8632_config
+          - config_file: x8664_config
             wheel: true
           
             
@@ -86,9 +86,9 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    - name: config 8632 gateway
+    - name: config x86 gateway
       working-directory: /mnt/src/openwrt
-      if: contains(matrix.config_file, '8632')
+      if: contains(matrix.config_file, 'x86')
       run: |
         sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
     - name: config 7621 gateway
