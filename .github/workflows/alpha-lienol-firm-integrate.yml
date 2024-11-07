@@ -28,7 +28,7 @@ jobs:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-          - config_file: 7621pw_config
+          - config_file: 8632_config
             wheel: true
           
             
@@ -76,7 +76,7 @@ jobs:
         git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone --single-branch -b lua  https://github.com/sbwml/luci-app-alist package/alist
         git clone --single-branch -b master https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
-        #git clone --single-branch -b master  https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic
+        git clone --single-branch -b master  https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic
         cat feeds.conf.default     
 
     - name: load the  feeds
