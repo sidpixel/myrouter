@@ -25,10 +25,10 @@ jobs:
       matrix: 
         config_file: [x8664_config,x8632_config,x8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
-          - platform: lienol1907
+          - platform: lienol2305
             repo_url: https://github.com/sidpixel/op
-            repo_branch: 19.07
-          - config_file: x8664_config
+            repo_branch: 23.05
+          - config_file: ${{ matrix.config_file }}
             wheel: true
           
             
