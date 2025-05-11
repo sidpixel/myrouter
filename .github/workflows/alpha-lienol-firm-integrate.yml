@@ -28,7 +28,7 @@ jobs:
           - platform: lienol2305
             repo_url: https://github.com/sidpixel/op
             repo_branch: 23.05
-          - config_file: lienol
+          - config_file: _config
             wheel: true
           
             
