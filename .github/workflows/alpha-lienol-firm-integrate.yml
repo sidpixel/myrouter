@@ -121,7 +121,8 @@ jobs:
       run: |
         rm -rf artifact
         mkdir -p artifact
-        cp -rf $(find openwrt/bin/targets/*/*/  -type f  -name *squashfs* -o -name *manifest*)   artifact/
+        tree openwrt/bin/targets/
+        find openwrt/bin/targets/ -type f \( -name "*squashfs*" -o -name "*.bin" -o -name "*manifest*" \) -exec cp -rf {} artifact/ \;
         cd artifact
         gzip --best *  
 
