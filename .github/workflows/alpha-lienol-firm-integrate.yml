@@ -34,7 +34,9 @@ jobs:
     steps: 
     - name: Skip build if wheel is false
       if: matrix.wheel == false
-      run: exit 1
+      run: |
+        echo "::warning::Build skipped for ${{ matrix.config_file }}"
+        exit 78  # 使用 GitHub 约定的 ACK 退出码表示跳过
     - name: Checkout
       uses: actions/checkout@main
       with:
