@@ -33,7 +33,7 @@ jobs:
                   
     steps: 
     - name: Skip build if wheel is false
-      if: matrix.wheel == truo
+      if: matrix.wheel == true
       run: |
         echo "::info ::Build  for ${{ matrix.config_file }}"
     - name: Checkout
