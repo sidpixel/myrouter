@@ -36,7 +36,7 @@ jobs:
     steps:
     - name: Skip build if wheel is false
       if: matrix.wheel == false
-      run:  exit 1
+      run:  echo "Skipping build"
       
     - name: Checkout
       uses: actions/checkout@main
