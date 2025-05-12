@@ -17,7 +17,6 @@ on:
   
 jobs: 
   job_build_firmware:
-    if: matrix.wheel != false  # 👈 关键逻辑：不满足条件直接跳过 job
     #runs-on: ubuntu-latest
     runs-on: ubuntu-22.04
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
@@ -33,7 +32,7 @@ jobs:
             wheel: true
           
             
-
+    if: ${{ matrix.wheel }}
     steps:  
     - name: Checkout
       uses: actions/checkout@main
