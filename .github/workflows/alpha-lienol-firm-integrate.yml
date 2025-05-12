@@ -30,12 +30,12 @@ jobs:
             repo_branch: 19.07
           - config_file: 7621pw_config
             wheel: true
+        exclude:
+          - config_file: x8664_config
+          - config_file: x8632_config
+          - config_file: 7621pw2_config
                   
     steps: 
-    - name: Skip build if wheel is false
-      if: matrix.wheel == true
-      run: |
-        echo "::info ::Build  for ${{ matrix.config_file }}"
     - name: Checkout
       uses: actions/checkout@main
       with:
