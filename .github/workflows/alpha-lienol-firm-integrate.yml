@@ -17,25 +17,22 @@ on:
   
 jobs: 
   job_build_firmware:
+    #runs-on: ubuntu-latest
     runs-on: ubuntu-22.04
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
-      matrix:
-        # 主配置列表：定义所有可能的配置项
-        config_file: [x8664_config, x8632_config, 7621pw_config, 7621pw2_config]
+      matrix: 
+        config_file: [x8664_config,x8632_config,7621pw_config,7621pw2_config]
         include:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
-          - config_file: x8664_config
-            wheel: false
-          - config_file: x8632_config
-            wheel: false
           - config_file: 7621pw_config
-            wheel: true
+        exclude:
+          - config_file: x8664_config
+          - config_file: x8632_config
           - config_file: 7621pw2_config
-            wheel: false
                   
     steps: 
     - name: Checkout
