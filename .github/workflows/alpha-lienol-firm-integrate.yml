@@ -30,10 +30,11 @@ jobs:
             repo_branch: 19.07
           - config_file: 7621pw_config
             wheel: true
-          
-            
-    if: ${{ matrix.wheel }}
-    steps:  
+                  
+    steps: 
+    - name: Skip build if wheel is false
+      if: matrix.wheel == false
+      run: exit 1
     - name: Checkout
       uses: actions/checkout@main
       with:
