@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        config_file: [x8664_config,x8632_config,7621pw_config,7621pw2_config]
+        config_file: [x8664_config,x8632_config,x8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
         include:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
@@ -32,7 +32,12 @@ jobs:
         exclude:
           - config_file: x8664_config
           - config_file: x8632_config
+          - config_file: x8632pw2_config
+          - config_file: 7621clash_config
           - config_file: 7621pw2_config
+
+
+
                   
     steps: 
     - name: Checkout
