@@ -17,8 +17,8 @@ on:
   
 jobs: 
   job_build_firmware:
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    #runs-on: ubuntu-22.04
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
@@ -58,8 +58,8 @@ jobs:
       run: |
         sudo -E apt update
         sudo -E apt install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
-        gettext git libncurses-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
-        file wget python2 gcc libfuse-dev
+        gettext git libncurses-dev libssl-dev  rsync unzip zlib1g-dev \
+        file wget  gcc libfuse-dev
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
     - name:  firmware source code download
