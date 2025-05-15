@@ -135,14 +135,29 @@ jobs:
     - name:  Organize files
       working-directory: /mnt/src
       run: |
+        set -e  # 一旦出错立即退出
+
         rm -rf artifact
-        mkdir -p artifact
-        tree openwrt/bin/targets/
-        find openwrt/bin/targets/ -type f \( -name "*squashfs*" -o -name "*.bin" -o -name "*manifest*" \) -exec cp -rf {} artifact/ \;
-        cp -r openwrt/bin/packages/ artifact/ipks
+        mkdir -p artifact/ipks
+
+        # 复制固件文件
+        find openwrt/bin/targets/ -type f \( -name "*squashfs*" -o -name "*.bin" -o -name "*manifest*" \) \
+          -exec cp -v {} -t artifact/ \;
+
+        # 复制 ipk 包
+        find openwrt/bin/packages/ -type f -name "*.ipk" \
+          -exec cp -v {} -t artifact/ipks/ \;
+
         cd artifact
+
+        # 压缩一级文件（*.bin、*.manifest 等）
+        echo "📦 压缩固件文件..."
         find . -maxdepth 1 -type f -exec gzip --best {} \;
+
+        # 打包所有 ipk 包为 tar.gz
+        echo "📦 打包 ipks 为 tar.gz..."
         tar -czf ipks.tar.gz ipks/
+
         rm -rf ipks
         
     - name: Upload firmware directory
