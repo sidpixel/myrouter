@@ -82,14 +82,14 @@ jobs:
     - name:  Load custom feeds and Load custom configuration
       working-directory: /mnt/src/openwrt
       run: |
-        git clone --single-branch https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
-        git clone --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
-        git clone --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
-        git clone --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
-        git clone --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
-        git clone --single-branch -b lua  https://github.com/sbwml/luci-app-alist package/alist
-        git clone --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
-        git clone --single-branch  https://github.com/kuoruan/openwrt-frp.git package/frp
+        git clone   -b v5.0.2 --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+        git clone --depth 1 --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+        git clone --depth 1 --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
+        git clone --depth 1 --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
+        git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
+        git clone -b lua  --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
+        git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
+        git clone --depth 1 --single-branch  https://github.com/kuoruan/openwrt-frp.git package/frp
         
         #git clone --single-branch -b master  https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic
         
