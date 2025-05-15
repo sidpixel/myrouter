@@ -63,6 +63,16 @@ jobs:
         file wget  gcc libfuse-dev
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
+    - name: install python2
+      run: |
+        sudo wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
+        sudo tar xzf Python-2.7.18.tgz
+        cd Python-2.7.18
+        sudo ./configure --prefix=/opt/python2
+        sudo make -j$(nproc)
+        sudo make install
+        sudo ln -s /opt/python2/bin/python2 /usr/local/bin/python2
+
     - name:  firmware source code download
       working-directory: /mnt/src
       run: |
