@@ -29,9 +29,9 @@ jobs:
             repo_url: https://github.com/sidpixel/op
             repo_branch: 19.07
           - config_file: x8632_config
+          - config_file: 7621pw_config
 
         exclude:
-          - config_file: 7621pw_config
           - config_file: x8632pw2_config
           - config_file: 7621pw2_config
           - config_file: x8664_config
