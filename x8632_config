@@ -45,13 +45,13 @@ CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-fs-xfs=y
 
 #log loop and  remote log 
-#CONFIG_PACKAGE_logrotate=y
-#CONFIG_PACKAGE_rsyslog=y
+CONFIG_PACKAGE_logrotate=y
+CONFIG_PACKAGE_rsyslog=y
 
 # light lxc 
-#CONFIG_PACKAGE_luci-app-lxc=y
-#CONFIG_PACKAGE_lxc=y
-#CONFIG_PACKAGE_lxc-attach=y
+CONFIG_PACKAGE_luci-app-lxc=y
+CONFIG_PACKAGE_lxc=y
+CONFIG_PACKAGE_lxc-attach=y
 
 
 # LUCI Appliciations
