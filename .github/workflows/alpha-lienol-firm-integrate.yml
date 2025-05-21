@@ -17,8 +17,8 @@ on:
   
 jobs: 
   job_build_firmware:
-    runs-on: ubuntu-latest
-    #runs-on: ubuntu-22.04
+    #runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
@@ -138,8 +138,8 @@ jobs:
       working-directory: /mnt/src/openwrt
       run: |
         echo -e "$(nproc) thread compile"
-        #make -j$(nproc) || make -j1 ||make -j1 V=s
-        make -j$(nproc)
+        make -j$(nproc) || make -j1 ||make -j1 V=s
+        #make -j$(nproc)
  
     - name: Check space usage
       if: (!cancelled())
