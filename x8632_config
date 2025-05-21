@@ -53,6 +53,9 @@ CONFIG_PACKAGE_luci-app-lxc=y
 CONFIG_PACKAGE_lxc=y
 CONFIG_PACKAGE_lxc-attach=y
 
+# avahi daemon and utils
+CONFIG_PACKAGE_avahi-dbus-daemon=y
+CONFIG_PACKAGE_avahi-utils=y
 
 # LUCI Appliciations
 CONFIG_PACKAGE_luci-app-accesscontrol=y
