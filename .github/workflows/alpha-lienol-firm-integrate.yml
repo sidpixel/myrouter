@@ -52,10 +52,14 @@ jobs:
         sudo mkdir -p /mnt/src
         sudo chown -R  $USER.$USER  /mnt/src
         df -h  
+    - name: Detect Ubuntu version
+      id: detect_os
+      run: |
+        echo "UBUNTU_VERSION=$(lsb_release -rs)" >> $GITHUB_OUTPUT
     - name: ubuntu 22.04 install  dependents pkg 
       env:
         DEBIAN_FRONTEND: noninteractive
-      if: contains(runner.image, 'ubuntu-24.04')
+      if: steps.detect_os.outputs.UBUNTU_VERSION == '22.04'
       run: |
         sudo -E apt update
         sudo -E apt install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
@@ -66,7 +70,7 @@ jobs:
     - name: ubuntu 24.04 install  dependents pkg and compile  python2
       env:
         DEBIAN_FRONTEND: noninteractive
-      if: contains(runner.image, 'ubuntu-24.04')
+      if: steps.detect_os.outputs.UBUNTU_VERSION == '24.04'
       run: |
         sudo -E apt update
         sudo -E apt install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
