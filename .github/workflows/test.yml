@@ -131,6 +131,7 @@ jobs:
         sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  .config
         make defconfig -j$(nproc)
+        cat .config
        
 
     - name:  Organize files
@@ -140,7 +141,7 @@ jobs:
 
         rm -rf artifact
         mkdir -p artifact
-        mv .config artifact/8632config
+        cp /mnt/src/openwrt/.config artifact/8632config
 
         
     - name: Upload firmware directory
