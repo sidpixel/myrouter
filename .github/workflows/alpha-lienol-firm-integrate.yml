@@ -30,7 +30,7 @@ jobs:
             #repo_branch: 19.07
           - platform: lienol2410
             repo_url: https://github.com/Lienol/openwrt
-            repo_branch: 24.10
+            repo_branch: "24.10"
           - config_file: x8632_config
 
 
