@@ -28,10 +28,10 @@ jobs:
           #- platform: lienol1907
             #repo_url: https://github.com/sidpixel/op
             #repo_branch: 19.07
-          - platform: lienol2410
+          - platform: lienol2305
             repo_url: https://github.com/Lienol/openwrt
-            repo_branch: "24.10"
-          #- config_file: x8632_config
+            repo_branch: "23.05"
+          - config_file: x8632_config
           - config_file: 7621pw_config
           - config_file: 7621pw2_config
           
