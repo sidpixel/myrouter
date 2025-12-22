@@ -31,8 +31,8 @@ jobs:
             repo_branch: "23.05"
           #- config_file: x8632_config
           #- config_file: 7621pw_config
-          - config_file: 7621pw2_config
-          - config_file: 7621clash_config
+          #- config_file: 7621pw2_config
+          #- config_file: 7621clash_config
         exclude:
           - config_file: 7621pw_config
           - config_file: x8632_config
