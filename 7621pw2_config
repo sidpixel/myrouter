@@ -19,7 +19,7 @@ CONFIG_PACKAGE_kmod-mt76x02-common=m  #多余的包
 
 # USB 相关
 CONFIG_PACKAGE_automount=y
-CONFIG_PACKAGE_smartmontools=m    #远程监控网络设备状态（CPU、内存、接口流量、路由表等）
+CONFIG_PACKAGE_smartmontools=m
 CONFIG_PACKAGE_luci-app-hd-idle=m
 CONFIG_PACKAGE_luci-app-usb-printer=m
 CONFIG_PACKAGE_luci-app-samba=y
@@ -47,21 +47,20 @@ CONFIG_PACKAGE_avahi-utils=y
 
 # LUCI Appliciations
 CONFIG_PACKAGE_luci-app-ahcp=m
-CONFIG_PACKAGE_luci-app-aria2=y
+CONFIG_PACKAGE_luci-app-aria2=y #通用、轻量、支持多协议(HTTP / HTTPS / FTP / SFTP / BitTorrent / Metalink)下载
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=m
 CONFIG_PACKAGE_luci-app-fileassistant=y
 CONFIG_PACKAGE_luci-app-guest-wifi=y  
 CONFIG_PACKAGE_luci-app-hnet=m
 CONFIG_PACKAGE_luci-app-minidlna=y
-CONFIG_PACKAGE_luci-app-nut=y  
+CONFIG_PACKAGE_luci-app-nut=m  #Network UPS Tools管理不间断电源
 CONFIG_PACKAGE_luci-app-oaf=m
 CONFIG_PACKAGE_luci-app-onliner=y
 CONFIG_PACKAGE_luci-app-simple-adblock=y   #ramips
-CONFIG_PACKAGE_luci-app-snmpd=y
+CONFIG_PACKAGE_luci-app-snmpd=m     #远程监控网络设备状态（CPU、内存、接口流量、路由表等）
 CONFIG_PACKAGE_luci-app-statistics=y
 CONFIG_PACKAGE_luci-app-splash=m
-CONFIG_PACKAGE_luci-app-timedreboot=y
-CONFIG_PACKAGE_luci-app-transmission=y  
+CONFIG_PACKAGE_luci-app-transmission=m #专注 BT / Magnet 下载（长时间托管、追踪种子）  
 CONFIG_PACKAGE_luci-app-ttyd=m 
 CONFIG_PACKAGE_luci-app-turboacc=y
 CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA=y
