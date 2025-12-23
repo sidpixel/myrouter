@@ -53,7 +53,7 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
-        ref: 'master'
+        #ref: 'master'
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
