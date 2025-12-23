@@ -104,7 +104,7 @@ jobs:
         git clone --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         #git clone   -b v5.0.2 --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --depth 1 --single-branch https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
-        git clone --depth 1 --single-branch https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
+        git clone --depth 1 --single-branch https://github.com/sidpixel/openwrt-passwall2.git package/openwrt-passwall2
         git clone --depth 1 --single-branch  https://github.com/xiaorouji/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone -b lua  --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
