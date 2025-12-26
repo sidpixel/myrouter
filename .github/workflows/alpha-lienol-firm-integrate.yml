@@ -132,11 +132,27 @@ jobs:
       if: contains(matrix.config_file, '7621')
       run: |
         sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
-
-    - name: Download package
+    - name: Set up a specify config
       working-directory: /mnt/src/openwrt
       run: |
         sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
+        # 解决rust编译错误（`llvm.download-ci-llvm` cannot be set to `true` on CI. Use `if-unchanged` instead.）
+        echo "------------"
+        find -name rust
+        ls feeds/packages/lang/rust
+        echo "------------"
+        ls package/feeds/packages/rust
+        echo "------------"
+        cat feeds/packages/lang/rust/Makefile
+        echo "------------"
+        sed -i 's/--set=llvm.download-ci-llvm=true/--set=llvm.download-ci-llvm=if-unchanged/' feeds/packages/lang/rust/Makefile
+        echo "------------"
+        cat feeds/packages/lang/rust/Makefile
+        echo "------------"
+
+    - name: Download package
+      working-directory: /mnt/src/openwrt
+      run: |  
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  .config
         make defconfig -j$(nproc)
         make download -j$(nproc)
