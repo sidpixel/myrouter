@@ -19,7 +19,7 @@ CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
 
 # 按需隧道（只保留 6in4，其他可删）
-CONFIG_PACKAGE_6in4=y
+#CONFIG_PACKAGE_6in4=y
 
 # 如果需要用 UEFI 启动 OpenWrt 镜像
 CONFIG_PACKAGE_grub2-efi=y
@@ -75,7 +75,7 @@ CONFIG_PACKAGE_luci-app-alist=y
 CONFIG_PACKAGE_luci-app-aria2=y
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=y
 CONFIG_PACKAGE_luci-app-clamav=y
-CONFIG_PACKAGE_luci-app-frpc=y
+#CONFIG_PACKAGE_luci-app-frpc=y
 CONFIG_PACKAGE_luci-app-guest-wifi=y
 CONFIG_PACKAGE_luci-app-haproxy-tcp=y
 CONFIG_PACKAGE_luci-app-hd-idle=y
@@ -92,8 +92,6 @@ CONFIG_PACKAGE_luci-app-onliner=y
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-pushbot=y
 #CONFIG_PACKAGE_luci-app-qos=y   #due to d2550 performance low
-CONFIG_PACKAGE_luci-app-radicale=y
-CONFIG_PACKAGE_radicale2=y
 CONFIG_PACKAGE_luci-app-ramfree=y
 CONFIG_PACKAGE_luci-app-rosy-file-server=y
 #CONFIG_PACKAGE_luci-app-samba4=y
