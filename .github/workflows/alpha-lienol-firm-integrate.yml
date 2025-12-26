@@ -31,9 +31,9 @@ jobs:
             repo_branch: "24.10"
           
         exclude:
-          #- config_file: x8632pw2_config 
+          - config_file: x8632pw2_config 
           - config_file: x8664_config
-          - config_file: x8632_config
+          #- config_file: x8632_config
           - config_file: 7621pw_config
           - config_file: 7621pw2_config
           - config_file: 7621clash_config
