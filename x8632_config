@@ -34,6 +34,16 @@ CONFIG_PACKAGE_ddns-scripts_cloudflare.com-v4=y
 # Dnsmasq 功能扩展（按需选择）
 CONFIG_PACKAGE_dnsmasq_full_conntrack=y
 
+#
+# 1. Collections
+#
+# CONFIG_PACKAGE_luci is not set
+# CONFIG_PACKAGE_luci-light is not set
+CONFIG_PACKAGE_luci-nginx=y
+# CONFIG_PACKAGE_luci-ssl is not set
+# CONFIG_PACKAGE_luci-ssl-openssl is not set
+# end of 1. Collections
+
 
 # USB 支持模块（适用于 Atom D2550）
 CONFIG_PACKAGE_kmod-usb2=y
