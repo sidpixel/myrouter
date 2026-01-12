@@ -9,6 +9,7 @@ CONFIG_IPV6=y
 CONFIG_KERNEL_IPV6=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
 CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-nf-nat6=y
 CONFIG_PACKAGE_ipv6helper=m
 
 
