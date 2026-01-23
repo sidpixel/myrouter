@@ -53,6 +53,7 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
+        ref: ${{ matrix.repo_branch }}
         #ref: 'master'
     - name: create my space
       run: |
