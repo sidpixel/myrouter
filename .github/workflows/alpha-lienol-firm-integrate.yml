@@ -53,8 +53,7 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
-        #ref: 'master'
-        ref: ${{ matrix.repo_branch }}
+        #ref: ${{ matrix.repo_branch }}  ## Checkout defaults to the workflow's branch; ref is only needed for cross-branch builds
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
