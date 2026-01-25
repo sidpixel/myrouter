@@ -5,12 +5,16 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 
 
 # IPv6 支持
-CONFIG_IPV6=y
-CONFIG_KERNEL_IPV6=y
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-CONFIG_PACKAGE_kmod-nft-socket=y
-CONFIG_PACKAGE_kmod-nf-nat6=y
-CONFIG_PACKAGE_ipv6helper=m
+CONFIG_PACKAGE_nftables=y
+CONFIG_PACKAGE_kmod-nft-nat=y
+CONFIG_PACKAGE_kmod-nft-nat6=y
+CONFIG_PACKAGE_kmod-ipt-compat-xtables=y
+CONFIG_PACKAGE_kmod-nft-netdev=y        # 网络设备支持
+CONFIG_PACKAGE_kmod-nft-offload=y       # 硬件加速（推荐）
+CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y
+CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
+
 
 
 # Wireless 驱动程序(开源)
@@ -21,8 +25,7 @@ CONFIG_PACKAGE_automount=y
 CONFIG_PACKAGE_smartmontools=m    #远程监控网络设备状态（CPU、内存、接口流量、路由表等）
 CONFIG_PACKAGE_luci-app-hd-idle=m
 CONFIG_PACKAGE_luci-app-usb-printer=m
-CONFIG_PACKAGE_luci-app-samba=y
-CONFIG_PACKAGE_luci-app-vsftpd=y
+
 
 ## USB 网络共享
 CONFIG_PACKAGE_kmod-usb-net=m #必须保留基础的 kmod-usb-net才能识别后面网卡
@@ -55,6 +58,7 @@ CONFIG_PACKAGE_luci-app-minidlna=y
 CONFIG_PACKAGE_luci-app-nut=m  #Network UPS Tools管理不间断电源
 CONFIG_PACKAGE_luci-app-oaf=m
 CONFIG_PACKAGE_luci-app-onliner=y
+CONFIG_PACKAGE_luci-app-samba=y
 CONFIG_PACKAGE_luci-app-simple-adblock=y   #ramips
 CONFIG_PACKAGE_luci-app-snmpd=m     #远程监控网络设备状态（CPU、内存、接口流量、路由表等）
 CONFIG_PACKAGE_luci-app-statistics=y
@@ -64,6 +68,7 @@ CONFIG_PACKAGE_luci-app-ttyd=m
 CONFIG_PACKAGE_luci-app-turboacc=y
 CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA=y
 CONFIG_PACKAGE_luci-app-upnp=y
+CONFIG_PACKAGE_luci-app-vsftpd=y
 CONFIG_PACKAGE_luci-app-watchcat=y   
 CONFIG_PACKAGE_luci-app-wireguard=m
 CONFIG_PACKAGE_luci-app-wol=y
