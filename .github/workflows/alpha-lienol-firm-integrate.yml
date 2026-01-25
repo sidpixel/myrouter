@@ -142,6 +142,7 @@ jobs:
       run: |
         sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
         mv $GITHUB_WORKSPACE/${{ matrix.config_file }}  .config
+        grep -i passwall .config
         make defconfig -j$(nproc)
         make download -j$(nproc)
         df -h
