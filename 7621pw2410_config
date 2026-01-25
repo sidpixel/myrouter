@@ -6,12 +6,16 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 
 # IPv6 支持
 CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-CONFIG_PACKAGE_nftables=y
-CONFIG_PACKAGE_kmod-nft-nat=y
-CONFIG_PACKAGE_kmod-nft-nat6=y
-CONFIG_PACKAGE_kmod-ipt-compat-xtables=y
-CONFIG_PACKAGE_kmod-nft-netdev=y        # 网络设备支持
-CONFIG_PACKAGE_kmod-nft-offload=y       # 硬件加速（推荐）
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
+CONFIG_PACKAGE_iptables-mod-iprange=y
+
+#CONFIG_PACKAGE_nftables=y
+#CONFIG_PACKAGE_kmod-nft-nat=y
+#CONFIG_PACKAGE_kmod-nft-nat6=y
+#CONFIG_PACKAGE_kmod-ipt-compat-xtables=y
+#CONFIG_PACKAGE_kmod-nft-netdev=y        # 网络设备支持
+#CONFIG_PACKAGE_kmod-nft-offload=y       # 硬件加速（推荐）
+
 
 
 
