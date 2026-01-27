@@ -31,7 +31,7 @@ Before using this project, make sure you have the following:
 
 Start by forking this repository to your own GitHub account:
 
-- Go to the [Lienol OpenWrt 19.07 repository](https://github.com/Lienol/openwrt).
+- Go to the [sidpixel OpenWrt 19.07 repository](https://github.com/sidpixel/op).
 - Fork the repository to your GitHub account by clicking the "Fork" button in the top-right corner.
 
 ### 2. Clone the Forked Repository
@@ -39,5 +39,5 @@ Start by forking this repository to your own GitHub account:
 Clone your forked repository to your local machine:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/openwrt.git
+git clone https://github.com/sidpixel/op.git
 cd openwrt
