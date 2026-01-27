@@ -22,13 +22,11 @@ jobs:
     name: build (${{ matrix.platform }}-${{ matrix.config_file }})
     strategy:
       fail-fast: false
-      matrix: 
-        config_file: [x8664_config,x8632_config,x8632pw2_config,7621clash_config,7621pw_config,7621pw2_config]
-
+      matrix:         
+        config_file: [x8664_config,x8632_config,x8632pw2_config,7621clash_config,7621pw_config,7621pw2410_config,7621pw2_config]
         include:
           - platform: lienol1907
             repo_url: https://github.com/sidpixel/op
-            #repo_url: https://github.com/Lienol/openwrt
             repo_branch: "19.07"
           
         exclude:
@@ -36,12 +34,14 @@ jobs:
           - config_file: x8664_config
           - config_file: x8632_config
           #- config_file: 7621pw_config
+          - config_file: 7621pw2410_config
           - config_file: 7621pw2_config
           - config_file: 7621clash_config
           #############################
           #- config_file: x8632pw2_config 
           #- config_file: x8664_config
           #- config_file: x8632_config
+          #- config_file: 7621pw_config
           #- config_file: 7621pw_config
           #- config_file: 7621pw2_config
           #- config_file: 7621clash_config
@@ -53,7 +53,8 @@ jobs:
       uses: actions/checkout@main
       with:
         fetch-depth: 1
-        #ref: 'master'
+        #ref: ${{ matrix.repo_branch }}  ## Checkout defaults to the workflow's branch; ref is only needed for cross-branch builds
+
     - name: create my space
       run: |
         sudo rm -rf /mnt/src
@@ -101,18 +102,19 @@ jobs:
     - name:  Load custom feeds and Load custom configuration
       working-directory: /mnt/src/openwrt
       run: |
+        
         git clone --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         #git clone   -b v5.0.2 --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --depth 1 --single-branch https://github.com/Openwrt-Passwall/openwrt-passwall.git package/openwrt-passwall
         git clone --depth 1 --single-branch https://github.com/sidpixel/openwrt-passwall2.git package/openwrt-passwall2
-        git clone --depth 1 --single-branch  https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git  package/passwall-deps       
+        git clone   -b 19.07  --depth 1 --single-branch  https://github.com/sidpixel/openwrt-passwall-packages   package/openwrt-passwall-packages  
+
         git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone -b lua  --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
         git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
-        #git clone --depth 1 --single-branch  https://github.com/sidpixel/openwrt-frp.git package/frp
-        
         #git clone --single-branch -b master  https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic
         
+       
         cat feeds.conf.default     
 
     - name: load the  feeds
@@ -132,23 +134,10 @@ jobs:
       if: contains(matrix.config_file, '7621')
       run: |
         sed -i 's/192.168.1.1/10.1.1.1/g' package/base-files/files/bin/config_generate
-    - name: Set up a specify config
-      working-directory: /mnt/src/openwrt
-      run: |
-        sed -i 's/OpenWrt/MyOp/g' package/base-files/files/bin/config_generate
-        # 解决rust编译错误（`llvm.download-ci-llvm` cannot be set to `true` on CI. Use `if-unchanged` instead.）
-        echo "------------"
-        find -name rust
-        ls feeds/packages/lang/rust
-        echo "------------"
-        ls package/feeds/packages/rust
-        echo "------------"
-        cat feeds/packages/lang/rust/Makefile
-        echo "------------"
-        sed -i 's/--set=llvm.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
-        echo "------------"
-        cat feeds/packages/lang/rust/Makefile
-        echo "------------"
+
+    
+
+   
 
     - name: Download package
       working-directory: /mnt/src/openwrt
