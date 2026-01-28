@@ -65,10 +65,10 @@ jobs:
       id: detect_os
       run: |
         echo "UBUNTU_VERSION=$(lsb_release -rs)" >> $GITHUB_OUTPUT
-    - name: ubuntu 22.04 install  dependents pkg 
+    - name: ubuntu 22.04 or other debian os install  dependents pkg 
       env:
         DEBIAN_FRONTEND: noninteractive
-      if: steps.detect_os.outputs.UBUNTU_VERSION == '22.04'
+      if: steps.detect_os.outputs.UBUNTU_VERSION != '24.04'
       run: |
         sudo -E apt update
         sudo -E apt install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
