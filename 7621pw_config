@@ -49,6 +49,7 @@ CONFIG_PACKAGE_avahi-utils=y
 
 
 # LUCI Appliciations
+CONFIG_PACKAGE_luci-app-adblock=y
 CONFIG_PACKAGE_luci-app-ahcp=m
 CONFIG_PACKAGE_luci-app-aria2=y #通用、轻量、支持多协议(HTTP / HTTPS / FTP / SFTP / BitTorrent / Metalink)下载
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=m
