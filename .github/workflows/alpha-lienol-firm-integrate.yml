@@ -104,7 +104,7 @@ jobs:
         git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone -b lua  --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
         git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
-        git clone  -b releases/v0.68.1-1 --depth 1 --single-branch  https://github.com/kuoruan/openwrt-frp.git package/frp
+        #git clone  -b releases/v0.68.1-1 --depth 1 --single-branch  https://github.com/kuoruan/openwrt-frp.git package/frp
         
         #git clone --single-branch -b master  https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic
         
