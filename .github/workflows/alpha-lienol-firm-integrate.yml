@@ -75,7 +75,7 @@ jobs:
         file wget python2 gcc libfuse-dev
         sudo -E timedatectl set-timezone "Asia/Shanghai"
 
-    - name: ubuntu 24.04 install  dependents pkg and compile  python2
+    - name: ubuntu 24.04 install  dependents pkg 
       env:
         DEBIAN_FRONTEND: noninteractive
       if: steps.detect_os.outputs.UBUNTU_VERSION == '24.04'
