@@ -49,7 +49,7 @@ CONFIG_PACKAGE_avahi-utils=y
 
 
 # LUCI Appliciations
-CONFIG_PACKAGE_luci-app-adblock=y
+CONFIG_PACKAGE_luci-app-adblock=m
 CONFIG_PACKAGE_luci-app-ahcp=m
 CONFIG_PACKAGE_luci-app-aria2=y #通用、轻量、支持多协议(HTTP / HTTPS / FTP / SFTP / BitTorrent / Metalink)下载
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=m
@@ -60,7 +60,6 @@ CONFIG_PACKAGE_luci-app-minidlna=y
 CONFIG_PACKAGE_luci-app-nut=m  #Network UPS Tools管理不间断电源
 CONFIG_PACKAGE_luci-app-oaf=m
 CONFIG_PACKAGE_luci-app-onliner=y
-CONFIG_PACKAGE_luci-app-simple-adblock=y   #ramips
 CONFIG_PACKAGE_luci-app-snmpd=m     #远程监控网络设备状态（CPU、内存、接口流量、路由表等）
 CONFIG_PACKAGE_luci-app-statistics=y
 CONFIG_PACKAGE_luci-app-splash=m
@@ -116,8 +115,8 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
 
 # Other Appliciations
 #CONFIG_PACKAGE_bash=m
-#CONFIG_PACKAGE_curl=y
-CONFIG_PACKAGE_davfs2=y
+#CONFIG_PACKAGE_curl=m
+CONFIG_PACKAGE_davfs2=m
 CONFIG_PACKAGE_lsblk=m
 CONFIG_PACKAGE_unzip=m
 
