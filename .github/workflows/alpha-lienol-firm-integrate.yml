@@ -102,11 +102,12 @@ jobs:
         #git clone   -b v5.0.2 --depth 1 --single-branch  https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
         git clone --depth 1 --single-branch https://github.com/Openwrt-Passwall/openwrt-passwall.git package/openwrt-passwall
         git clone --depth 1 --single-branch https://github.com/sidpixel/openwrt-passwall2.git package/openwrt-passwall2
-        git clone --depth 1 --single-branch  https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git  package/passwall-deps       
+        git clone --depth 1 --single-branch https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
-        git clone  --depth 1  --single-branch  https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
-        git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
+        git clone --depth 1 --single-branch https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
+        git clone --depth 1 --single-branch https://github.com/liudf0716/xfrpc.git package/xfrpc
+        #git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
         cat feeds.conf.default     
 
     - name: load the  feeds
