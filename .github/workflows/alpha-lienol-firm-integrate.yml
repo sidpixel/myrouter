@@ -105,7 +105,6 @@ jobs:
         git clone --depth 1 --single-branch https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git  package/passwall-deps       
         git clone --depth 1 --single-branch https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone --depth 1 --single-branch https://github.com/sbwml/luci-app-alist package/alist
-        git clone --depth 1 --single-branch https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
         git clone --depth 1 --single-branch https://github.com/liudf0716/xfrpc.git package/xfrpc
         #git clone --depth 1 --single-branch  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git  package/unblockneteasemusic
         cat feeds.conf.default     
